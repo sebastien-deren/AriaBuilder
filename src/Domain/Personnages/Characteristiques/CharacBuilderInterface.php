@@ -2,9 +2,10 @@
 
 namespace App\Domain\Personnages\Characteristiques;
 
+use App\Controller\Characteristics;
 use App\Domain\Model\Caracteristique;
 
 interface CharacBuilderInterface
 {
-    public function Build(Characteristics $baseCharac): Caracteristique;
+    public function build(Characteristics $baseCharac): Caracteristique;
 }

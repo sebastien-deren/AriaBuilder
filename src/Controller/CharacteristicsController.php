@@ -11,22 +11,21 @@ use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use App\Domain\Personnages\Characteristiques\CharacBuilderInterface;
+use App\Domain\Personnages\Characteristiques\CharacRules;
 
 class CharacteristicsController extends AbstractController
 {
     #[Route('api/characteristics', name: 'app_characteristics')]
     public function index(): Response
     {
-        return $this->render('characteristics/index.html.twig', [
-            'controller_name' => 'CharacteristicsController',
-        ]);
+        return new JsonResponse(['id' => 4, 'name' => 'toto'], 200);
     }
     #[Route('api/characacter/{id}/Characteristics', name: 'characteristics_create')]
     public function create(Request $request, CharacBuilderInterface $builder, CaracteristiqueRepository $repository, Personnage $personnage): Response
     {
         try {
             $jsonData = \json_decode($request->getContent()) ?? throw new \Exception('json file couldn\'t be retrieve', Response::HTTP_BAD_REQUEST);
-            $receivedCharacteristics = $this->processResponse($jsonData);
+            $receivedCharacteristics = $this->processCharac($jsonData);
             $caracteristique = $builder->Build($receivedCharacteristics);
             $personnage->setCaracteristique($caracteristique);
             $repository->save($caracteristique, true);
@@ -35,7 +34,7 @@ class CharacteristicsController extends AbstractController
         }
         return new JsonResponse($caracteristique, Response::HTTP_CREATED);
     }
-    private function processResponse(array $content): Characteristics
+    private function processCharac(array $content): Characteristics
     {
         if ('ok' === $content['status']) {
             $createCharacs = $content['characteristics'];
@@ -45,6 +44,8 @@ class CharacteristicsController extends AbstractController
             $characteristics->endurance = $createCharacs['endurance'];
             $characteristics->intelligence = $createCharacs['intelligence'];
             $characteristics->charisme = $createCharacs['charisme'];
+            $characteristics->rules = in_array($content['rules'], CharacRules::cases()) ? $content['rules'] : throw new \Exception('Rules you tried to use is invalid, valid rules are : "dice","three dices","point"', Response::HTTP_BAD_REQUEST);
+            $characteristics->dices = $content['dices'];
             return $characteristics;
         }
 
