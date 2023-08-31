@@ -20,11 +20,11 @@ class Profession
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Competence $CompetencePremiere = null;
+    private ?Competence $competencePremiere = null;
 
     #[ORM\ManyToOne]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Competence $CompetenceSeconde = null;
+    private ?Competence $competenceSeconde = null;
 
     public function getId(): ?int
     {
@@ -45,24 +45,24 @@ class Profession
 
     public function getCompetencePremiere(): ?Competence
     {
-        return $this->CompetencePremiere;
+        return $this->competencePremiere;
     }
 
-    public function setCompetencePremiere(?Competence $CompetencePremiere): static
+    public function setCompetencePremiere(?Competence $competencePremiere): static
     {
-        $this->CompetencePremiere = $CompetencePremiere;
+        $this->competencePremiere = $competencePremiere;
 
         return $this;
     }
 
     public function getCompetenceSeconde(): ?Competence
     {
-        return $this->CompetenceSeconde;
+        return $this->competenceSeconde;
     }
 
-    public function setCompetenceSeconde(?Competence $CompetenceSeconde): static
+    public function setCompetenceSeconde(?Competence $competenceSeconde): static
     {
-        $this->CompetenceSeconde = $CompetenceSeconde;
+        $this->competenceSeconde = $competenceSeconde;
 
         return $this;
     }

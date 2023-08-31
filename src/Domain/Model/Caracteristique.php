@@ -2,10 +2,13 @@
 
 namespace App\Domain\Model;
 
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Post;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CaracteristiqueRepository;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
+#[ApiResource()]
 class Caracteristique
 {
     #[ORM\Id]
@@ -14,26 +17,26 @@ class Caracteristique
     private ?int $id = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $Force = null;
+    private ?int $force = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $Endurance = null;
+    private ?int $endurance = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $Dexterite = null;
+    private ?int $dexterite = null;
 
     #[ORM\Column]
-    private ?int $Intelligence = null;
+    private ?int $intelligence = null;
 
     #[ORM\Column(nullable: true)]
-    private ?int $Charisme = null;
+    private ?int $charisme = null;
 
     #[ORM\Column(nullable: true)]
     private ?int $caracPoint = null;
 
     #[ORM\OneToOne(inversedBy: 'caracteristique', cascade: ['persist', 'remove'])]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Personnage $Personnage = null;
+    private ?Personnage $personnage = null;
 
     public function getId(): ?int
     {
@@ -42,60 +45,60 @@ class Caracteristique
 
     public function getForce(): ?int
     {
-        return $this->Force;
+        return $this->force;
     }
 
-    public function setForce(?int $Force): static
+    public function setForce(?int $force): static
     {
-        $this->Force = $Force;
+        $this->force = $force;
 
         return $this;
     }
 
     public function getEndurance(): ?int
     {
-        return $this->Endurance;
+        return $this->endurance;
     }
 
-    public function setEndurance(?int $Endurance): static
+    public function setEndurance(?int $endurance): static
     {
-        $this->Endurance = $Endurance;
+        $this->endurance = $endurance;
 
         return $this;
     }
 
     public function getDexterite(): ?int
     {
-        return $this->Dexterite;
+        return $this->dexterite;
     }
 
-    public function setDexterite(?int $Dexterite): static
+    public function setDexterite(?int $dexterite): static
     {
-        $this->Dexterite = $Dexterite;
+        $this->dexterite = $dexterite;
 
         return $this;
     }
 
     public function getIntelligence(): ?int
     {
-        return $this->Intelligence;
+        return $this->intelligence;
     }
 
-    public function setIntelligence(int $Intelligence): static
+    public function setIntelligence(int $intelligence): static
     {
-        $this->Intelligence = $Intelligence;
+        $this->intelligence = $intelligence;
 
         return $this;
     }
 
     public function getCharisme(): ?int
     {
-        return $this->Charisme;
+        return $this->charisme;
     }
 
-    public function setCharisme(?int $Charisme): static
+    public function setCharisme(?int $charisme): static
     {
-        $this->Charisme = $Charisme;
+        $this->charisme = $charisme;
 
         return $this;
     }
@@ -114,12 +117,12 @@ class Caracteristique
 
     public function getPersonnage(): ?Personnage
     {
-        return $this->Personnage;
+        return $this->personnage;
     }
 
-    public function setPersonnage(Personnage $Personnage): static
+    public function setPersonnage(Personnage $personnage): static
     {
-        $this->Personnage = $Personnage;
+        $this->personnage = $personnage;
 
         return $this;
     }
