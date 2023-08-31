@@ -2,14 +2,24 @@
 
 namespace App\Domain\Model;
 
+use ApiPlatform\Doctrine\Orm\Filter\RangeFilter;
+use ApiPlatform\Doctrine\Orm\Filter\SearchFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use App\Repository\PersonnageRepository;
+use DateTime;
+use DateTimeImmutable;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints\Range;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    paginationItemsPerPage: 10,
+)]
+#[ApiFilter(SearchFilter::class, properties: ['nom' => 'ipartial', 'genie' => 'partial'])]
+#[ApiFilter(RangeFilter::class, properties: ['age'])]
 class Personnage
 {
     #[ORM\Id]
@@ -35,10 +45,11 @@ class Personnage
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
-    #[ORM\OneToOne(mappedBy: 'Personnage', cascade: ['persist', 'remove'])]
+
+    #[ORM\OneToOne(inversedBy: 'personnage', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private ?Caracteristique $caracteristique = null;
 
-    #[ORM\OneToMany(mappedBy: 'perssonage', targetEntity: CompetencePersonnage::class)]
+    #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class)]
     private Collection $competence;
 
     public function __construct()
@@ -130,13 +141,7 @@ class Personnage
 
     public function setCaracteristique(Caracteristique $caracteristique): static
     {
-        // set the owning side of the relation if necessary
-        if ($caracteristique->getPersonnage() !== $this) {
-            $caracteristique->setPersonnage($this);
-        }
-
         $this->caracteristique = $caracteristique;
-
         return $this;
     }
 

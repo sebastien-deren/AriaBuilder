@@ -4,6 +4,7 @@ namespace App\Domain\Model;
 
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
+use App\Entity\CharacterModel\Personage;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Link;
@@ -54,8 +55,7 @@ class Caracteristique
     #[ORM\Column]
     private ?int $caracPoint = null;
 
-    #[ORM\OneToOne(inversedBy: 'caracteristique', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\OneToOne(mappedBy: 'caracteristique', cascade: ['persist'])]
     private ?Personnage $personnage = null;
 
     public function getId(): ?int
@@ -142,6 +142,10 @@ class Caracteristique
 
     public function setPersonnage(Personnage $personnage): static
     {
+        if ($personnage->getCaracteristique() !== $this) {
+            $personnage->setCaracteristique($this);
+        }
+
         $this->personnage = $personnage;
 
         return $this;

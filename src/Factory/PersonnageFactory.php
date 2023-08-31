@@ -47,10 +47,10 @@ final class PersonnageFactory extends ModelFactory
     protected function getDefaults(): array
     {
         return [
-            'age' => self::faker()->text(255),
+            'age' => (string)self::faker()->numberBetween(16, 89),
             'genie' => self::faker()->text(255),
-            'nom' => self::faker()->text(255),
-            'prenom' => self::faker()->text(255),
+            'nom' => self::faker()->lastName(),
+            'prenom' => self::faker()->firstName(),
             'societe' => self::faker()->text(255),
         ];
     }
