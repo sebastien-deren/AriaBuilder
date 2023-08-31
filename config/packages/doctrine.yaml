@@ -20,6 +20,11 @@ doctrine:
         dir: "%kernel.project_dir%/src/Domain/Model"
         prefix: 'App\Domain\Model'
         alias: CharacterModel
+      App:
+        is_bundle: false
+        dir: "%kernel.project_dir%/src/Entity"
+        prefix: 'App\Entity'
+        alias: App
 
 when@test:
   doctrine:
