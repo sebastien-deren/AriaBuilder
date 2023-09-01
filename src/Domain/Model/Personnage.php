@@ -2,44 +2,76 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\ApiResource;
-use App\Repository\PersonnageRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Put;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Patch;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use App\Domain\Model\Caracteristique;
+use ApiPlatform\Metadata\GetCollection;
+use App\Repository\PersonnageRepository;
+use App\Domain\Model\CompetencePersonnage;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    shortName: 'Personnage',
+    description: 'Personnage Jouable dans l\'univer d\'aria',
+    operations: [
+        new Get(),
+        new GetCollection(),
+        new Post(),
+        new Put(),
+        new Patch(),
+    ],
+    paginationItemsPerPage: 10,
+    denormalizationContext: [
+        'groups' => ['personnage:write'],
+    ],
+    normalizationContext: [
+        'groups' => ['personnage:read'],
+    ]
+)]
 class Personnage
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+    #[Groups(['personnage:write', 'personnage:read'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
+    #[Groups(['personnage:write', 'personnage:read'])]
     #[ORM\Column(length: 255)]
     private ?string $prenom = null;
 
+    #[Groups(['personnage:write', 'personnage:read'])]
     #[ORM\Column(length: 255)]
     private ?string $age = null;
 
-    #[ORM\Column(length: 255)]
+    #[Groups(['personnage:write', 'personnage:read'])]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $genie = null;
 
-    #[ORM\Column(length: 255)]
+    #[Groups(['personnage:write', 'personnage:read'])]
+    #[ORM\Column(length: 255, nullable: true)]
     private ?string $societe = null;
 
+    #[Groups(['personnage:write', 'personnage:read'])]
     #[ORM\Column(length: 255, nullable: true)]
     private ?string $picture = null;
 
-    #[ORM\OneToOne(mappedBy: 'Personnage', cascade: ['persist', 'remove'])]
+    #[Groups(['personnage:read'])]
+    #[ORM\OneToOne(inversedBy: 'personnage', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private ?Caracteristique $caracteristique = null;
 
-    #[ORM\OneToMany(mappedBy: 'perssonage', targetEntity: CompetencePersonnage::class)]
-    private Collection $competence;
+    #[Groups(['personnage:read'])]
+    #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class)]
+    private ?Collection $competence = null;
 
     public function __construct()
     {
@@ -67,7 +99,6 @@ class Personnage
     {
         return $this->prenom;
     }
-
     public function setPrenom(string $prenom): static
     {
         $this->prenom = $prenom;
@@ -130,13 +161,7 @@ class Personnage
 
     public function setCaracteristique(Caracteristique $caracteristique): static
     {
-        // set the owning side of the relation if necessary
-        if ($caracteristique->getPersonnage() !== $this) {
-            $caracteristique->setPersonnage($this);
-        }
-
         $this->caracteristique = $caracteristique;
-
         return $this;
     }
 
