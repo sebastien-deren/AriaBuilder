@@ -2,10 +2,7 @@
 
 namespace App\DTO;
 
-use App\Domain\Data\CharacteristicsEnum;
-use App\Domain\Model\Personnage;
 use App\Domain\Personnages\Characteristiques\CharacRules;
-use Symfony\Component\DomCrawler\UriResolver;
 
 class CharacteristicsInput
 {

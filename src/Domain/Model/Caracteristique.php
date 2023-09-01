@@ -7,14 +7,14 @@ use ApiPlatform\Metadata\Post;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Link;
-use App\Domain\Personnages\Characteristiques\CharacBuilder;
+use App\DTO\CharacProcessor;
 use App\DTO\CharacteristicsInput;
 use App\Repository\CaracteristiqueRepository;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
 #[ApiResource(
     operations: [
-        new Post(input: CharacteristicsInput::class, processor: CharacBuilder::class),
+        new Post(input: CharacteristicsInput::class, processor: CharacProcessor::class),
     ]
 )]
 #[ApiResource(
