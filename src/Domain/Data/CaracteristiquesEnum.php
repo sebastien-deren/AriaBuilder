@@ -2,9 +2,9 @@
 
 namespace App\Domain\Data;
 
-enum CaracteristiquesEnum
+enum CaracteristiquesEnum 
 {
-    case Force;
+    case Force ;
     case Dexterite;
     case Endurance;
     case Charisme;

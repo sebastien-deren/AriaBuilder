@@ -4,12 +4,13 @@ declare(strict_types=1);
 
 namespace App\DataFixtures;
 
-use App\Domain\Data\CaracteristiquesEnum;
-use App\Entity\Competence;
-use Doctrine\Bundle\FixturesBundle\Fixture;
-use Doctrine\Persistence\ObjectManager;
-use Psr\Log\LoggerInterface;
 use stdClass;
+use Psr\Log\LoggerInterface;
+use App\Domain\Model\Competence;
+use Doctrine\Persistence\ObjectManager;
+use App\Domain\Data\CaracteristiquesEnum;
+use App\Domain\Model\Caracteristique;
+use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class CompetenceFixtures extends Fixture
 {
@@ -19,7 +20,7 @@ class CompetenceFixtures extends Fixture
 
     public function load(ObjectManager $manager)
     {
-        $json = \file_get_contents($this->rootDir . 'src/Domain/Data/competences.json');
+        $json = \file_get_contents($this->rootDir . '/src/Domain/Data/competences.json');
         $competences = \json_decode($json, false);
         foreach ($competences as $competences) {
             if ($this->checkJson($competences)) {
@@ -44,11 +45,12 @@ class CompetenceFixtures extends Fixture
             $this->logger->alert($competence->name . "doesn't have a description, it is not fine for a base competence");
             return false;
         }
-        if (!isset($competence->secondCharac) || !\in_array($competence->firstCharac, CaracteristiquesEnum::cases())) {
+        if (!isset($competence->secondCharac) || !\in_array($competence->firstCharac, array_column(CaracteristiquesEnum::cases(), 'name'))) {
+            dd(CaracteristiquesEnum::cases());
             $this->logger->alert($competence->name . "doesn't have a firstCharac, this is not fine for a base competence");
             return false;
         }
-        if (!isset($competence->firstCharac) || !\in_array($competence->firstCharac, CaracteristiquesEnum::cases())) {
+        if (!isset($competence->firstCharac) || !\in_array($competence->firstCharac, array_column(CaracteristiquesEnum::cases(), 'name'))) {
             $this->logger->alert($competence->name . "doesn't have a secondCharac, this is not fine for a base competence");
             return false;
         }
