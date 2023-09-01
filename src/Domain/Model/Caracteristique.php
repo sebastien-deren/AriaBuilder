@@ -3,12 +3,25 @@
 namespace App\Domain\Model;
 
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
+use App\Entity\CharacterModel\Personage;
 use Doctrine\ORM\Mapping as ORM;
 use App\Repository\CaracteristiqueRepository;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
 #[ApiResource()]
+#[ApiResource(
+    uriTemplate: 'personnages/{personnage_id}/caracteristiques.{_format}',
+    operations: [new GetCollection()],
+    uriVariables: [
+        'personnage_id' => new Link(
+            fromProperty: 'caracteristique',
+            fromClass: Personnage::class,
+        )
+    ]
+)]
 class Caracteristique
 {
     #[ORM\Id]
@@ -34,8 +47,7 @@ class Caracteristique
     #[ORM\Column(nullable: true)]
     private ?int $caracPoint = null;
 
-    #[ORM\OneToOne(inversedBy: 'caracteristique', cascade: ['persist', 'remove'])]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\OneToOne(mappedBy: 'caracteristique', cascade: ['persist'])]
     private ?Personnage $personnage = null;
 
     public function getId(): ?int
@@ -122,6 +134,10 @@ class Caracteristique
 
     public function setPersonnage(Personnage $personnage): static
     {
+        if ($personnage->getCaracteristique() !== $this) {
+            $personnage->setCaracteristique($this);
+        }
+
         $this->personnage = $personnage;
 
         return $this;
