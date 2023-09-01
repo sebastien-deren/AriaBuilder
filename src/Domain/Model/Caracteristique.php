@@ -7,17 +7,13 @@ use ApiPlatform\Metadata\Post;
 use App\Entity\CharacterModel\Personage;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Link;
 use App\DTO\CharacProcessor;
 use App\DTO\CharacteristicsInput;
 use App\Repository\CaracteristiqueRepository;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
-#[ApiResource(
-    operations: [
-        new Post(input: CharacteristicsInput::class, processor: CharacProcessor::class),
-    ]
-)]
 #[ApiResource(
     uriTemplate: 'personnages/{personnage_id}/caracteristiques.{_format}',
     uriVariables: [
@@ -30,6 +26,13 @@ use App\Repository\CaracteristiqueRepository;
         new Get()
     ]
 )]
+#[ApiResource(
+    operations: [
+        new Post(input: CharacteristicsInput::class, processor: CharacProcessor::class),
+        new GetCollection(),
+    ]
+)]
+
 class Caracteristique
 {
     #[ORM\Id]

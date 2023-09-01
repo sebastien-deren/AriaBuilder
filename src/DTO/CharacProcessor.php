@@ -8,15 +8,20 @@ use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
 use ApiPlatform\Api\IriConverterInterface;
 use App\Domain\Personnages\Characteristiques\CharacBuilderInterface;
+use App\Repository\CaracteristiqueRepository;
+use Doctrine\ORM\EntityManagerInterface;
 
 class CharacProcessor implements ProcessorInterface
 {
-    public function __construct(private IriConverterInterface $iriConverter, private CharacBuilderInterface $characBuilderInterface)
+    public function __construct(private IriConverterInterface $iriConverter, private CharacBuilderInterface $characBuilderInterface, private EntityManagerInterface $entityManager)
     {
     }
     public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = [])
     {
         $charac = $this->characBuilderInterface->build($data);
         $charac->setPersonnage($this->iriConverter->getResourceFromIri($data->getPersonnage()));
+        $this->entityManager->persist($charac);
+        $this->entityManager->flush();
+        return $charac;
     }
 }
