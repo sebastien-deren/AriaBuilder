@@ -2,7 +2,7 @@
 
 namespace App\Domain\Personnages\Characteristiques;
 
-use App\Controller\Characteristics;
+use App\DTO\CharacteristicsInput as Characteristics;
 use App\Domain\Model\Caracteristique;
 
 interface CharacBuilderInterface

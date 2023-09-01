@@ -2,13 +2,33 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Link;
+use App\Domain\Personnages\Characteristiques\CharacBuilder;
+use App\DTO\CharacteristicsInput;
 use App\Repository\CaracteristiqueRepository;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
-#[ApiResource()]
+#[ApiResource(
+    operations: [
+        new Post(input: CharacteristicsInput::class, processor: CharacBuilder::class),
+    ]
+)]
+#[ApiResource(
+    uriTemplate: 'personnages/{personnage_id}/caracteristiques.{_format}',
+    uriVariables: [
+        'personnage_id' => new Link(
+            fromClass: Personnage::class,
+            fromProperty: 'caracteristique',
+        )
+    ],
+    operations: [
+        new Get()
+    ]
+)]
 class Caracteristique
 {
     #[ORM\Id]
@@ -16,22 +36,22 @@ class Caracteristique
     #[ORM\Column]
     private ?int $id = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $force = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $endurance = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $dexterite = null;
 
     #[ORM\Column]
     private ?int $intelligence = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $charisme = null;
 
-    #[ORM\Column(nullable: true)]
+    #[ORM\Column]
     private ?int $caracPoint = null;
 
     #[ORM\OneToOne(inversedBy: 'caracteristique', cascade: ['persist', 'remove'])]
