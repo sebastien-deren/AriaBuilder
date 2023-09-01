@@ -10,6 +10,7 @@ use App\Domain\Personnages\Characteristiques\CharacBuilderInterface;
 
 class CharacBuilder implements CharacBuilderInterface
 {
+
     public function build(Characteristics $baseCharac): Caracteristique
     {
         return match ($baseCharac->getRules()) {
@@ -23,7 +24,7 @@ class CharacBuilder implements CharacBuilderInterface
     {
         $builtCharac = new Caracteristique();
         $point = 0;
-        foreach ($baseCharac as $characValue) {
+        foreach ($baseCharac->toArray() as $characValue) {
             if ($characValue > CharacLimitEnum::Max100->value || $characValue < CharacLimitEnum::Min100->value) {
                 throw new \Exception("you can't have a characteristic bellow" . CharacLimitEnum::Min100->value . "or supperior to " . CharacLimitEnum::Max100->value,);
             }
@@ -46,7 +47,7 @@ class CharacBuilder implements CharacBuilderInterface
         if (5 !== count($dice = $baseCharac->getDices())) {
             throw new \Exception("you didn't submit the good number of dices");
         }
-        foreach ($baseCharac as $characValue) {
+        foreach ($baseCharac->toArray() as $characValue) {
             if ($characValue > CharacLimitEnum::Max20->value || $characValue < CharacLimitEnum::Min20->value) {
                 throw new \Exception("you can't have a characteristic bellow" . CharacLimitEnum::Min20->value . "or supperior to " . CharacLimitEnum::Max20->value,);
             }
@@ -65,7 +66,7 @@ class CharacBuilder implements CharacBuilderInterface
         if (3 !== count($sets = $baseCharac->getDices())) {
             throw new \Exception("you didn't submit the good number of set of dices");
         }
-        foreach ($baseCharac as $characValue) {
+        foreach ($baseCharac->toArray() as $characValue) {
             if ($characValue > CharacLimitEnum::Max20 || $characValue < CharacLimitEnum::Min20) {
                 throw new \Exception("you can't have a characteristic bellow" . CharacLimitEnum::Min20->value . "or supperior to " . CharacLimitEnum::Max20->value,);
             }
@@ -87,7 +88,7 @@ class CharacBuilder implements CharacBuilderInterface
             ->setIntelligence(($baseCharac->intelligence * 5));
     }
 
-    private function checkThreeSets($sets, $value): array
+    private function checkThreeSets(array $sets, int $value): array
     {
         foreach ($sets as $dicesKey => $dices) {
             $found = \array_search($value, $dices);
