@@ -3,17 +3,20 @@
 namespace App\Domain\Model;
 
 use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Post;
-use App\Entity\CharacterModel\Personage;
+use ApiPlatform\Metadata\Patch;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
-use ApiPlatform\Metadata\Link;
-use App\DTO\CharacProcessor;
-use App\DTO\CharacteristicsInput;
+use App\DTO\Inputs\Characteristics\DiceInput;
 use App\Repository\CaracteristiqueRepository;
+use App\DTO\Inputs\Characteristics\PointInput;
+use App\Domain\Personnages\Characteristiques\Processors\CharacDiceProcessor;
+use App\Domain\Personnages\Characteristiques\Processors\CharacPointProcessor;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
+
 #[ApiResource(
     uriTemplate: 'personnages/{personnage_id}/caracteristiques.{_format}',
     uriVariables: [
@@ -23,13 +26,25 @@ use App\Repository\CaracteristiqueRepository;
         )
     ],
     operations: [
-        new Get()
+        new Get(),
+        new Patch()
     ]
 )]
 #[ApiResource(
     operations: [
-        new Post(input: CharacteristicsInput::class, processor: CharacProcessor::class),
         new GetCollection(),
+    ]
+)]
+#[ApiResource(
+    uriTemplate: 'caracteristiques/points.{_format}',
+    operations: [
+        new Post(input: PointInput::class, processor: CharacPointProcessor::class)
+    ]
+)]
+#[ApiResource(
+    uriTemplate: 'caracteristiques/dice.{_format}',
+    operations: [
+        new Post(input: DiceInput::class, processor: CharacDiceProcessor::class)
     ]
 )]
 
