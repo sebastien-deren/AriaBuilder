@@ -9,7 +9,7 @@
         },
         "bonus":
         [
-            "Artisanat",
+            "Artisanat/Contruire",
             "Lire/Ecrire"
         ]
     },
@@ -33,7 +33,7 @@
         "bonus":
         [
             "Combat rapproché",
-            "Reflexe"
+            "Réflexes"
         ]
     },
     {
