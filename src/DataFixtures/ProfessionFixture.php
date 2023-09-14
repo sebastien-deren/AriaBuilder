@@ -1,0 +1,34 @@
+<?php
+
+namespace App\DataFixtures;
+
+use App\Domain\Data\MageEnum;
+use App\Domain\Model\CompetenceProfession;
+use App\Domain\Model\Profession;
+use App\Repository\CompetenceRepository;
+use Doctrine\Bundle\FixturesBundle\Fixture;
+use Doctrine\Persistence\ObjectManager;
+
+class ProfessionFixture extends Fixture
+{
+    public function __construct(private string $rootDir, private CompetenceRepository $competenceRepository)
+    {
+    }
+    public function load(ObjectManager $manager): void
+    {
+        $fileJson = \file_get_contents($this->rootDir . "/src/Domain/Data/Profession.json");
+        $professions = \json_decode($fileJson); // $product = new Product();
+        foreach ($professions as $profession) {
+            $professionEntity = new Profession();
+            $professionEntity->setNom($profession->name);
+            foreach ($profession->bonus as $competenceBonus) {
+                $competence = $this->competenceRepository->findOneBy(["nom" => $competenceBonus]) ?? dd($competenceBonus);
+                $professionEntity->addCompetenceProfession($competence);
+            }
+            $manager->persist($professionEntity);
+        }
+
+
+        $manager->flush();
+    }
+}

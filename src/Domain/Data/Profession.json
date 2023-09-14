@@ -1,0 +1,113 @@
+[
+    {
+        "name": "alchimiste",
+        "skills":
+        {
+            "Creer une potion": "60%",
+            "Identifier une substance":"40%",
+            "Magnetite Capricieuse":"50%"
+        },
+        "bonus":
+        [
+            "Artisanat",
+            "Lire/Ecrire"
+        ]
+    },
+    {
+        "name": "aventurier.e",
+        "skills":
+        {
+            "chanceux.se":"1 par jour"
+        },
+        "bonus":
+        [
+            "Connaissance de la nature",
+            "Esquiver"
+        ]
+    },
+    {
+        "name": "combattant.e",
+        "skills":{
+            "Bagout Fulgurant": "10 par campagne"
+        },
+        "bonus":
+        [
+            "Combat rapproché",
+            "Reflexe"
+        ]
+    },
+    {
+        "name": "mage de l'academie d'Aria",
+        "skills":{
+            "Modélisation":"60%",
+            "Faveurs d'ina":"10 affrontement"
+        },
+        "bonus":[
+            "Lire/Ecrire",
+            "Connaissance de la nature"
+        ]
+    },
+    {
+        "name": "Misericordieux.se",
+        "skills":{
+            "Modélisation":"80%",
+            "Voler la magie":"30%",
+            "sens de la traque":"50%"
+        },
+        "bonus":[
+            "Lire/Ecrire",
+            "Survie"
+        ]
+
+    },
+    {
+        "name":"Noble",
+        "skills":{
+            "Mécènes peu regardants":"10 fois par campagne"
+        },
+        "bonus":[
+            "Droit",
+            "Mentir/Convaincre"
+        ]
+    },
+    {
+        "name":"Voleur",
+        "skills":{
+            "Oreilles opportunes":"1 par jour"
+        },
+        "bonus":[
+            "Voler",
+            "Esquiver"
+        ]
+    },
+    {
+        "name":"Mage de Varna (bouclier)",
+        "skills":{
+            "bouclier":"50%",
+            "Invisibilisation":"50%"
+        },
+        "bonus":[
+            "Mentir/Convaincre",
+            "Connaissance des secrets"
+        ]
+    },
+    {
+        "name":"Mage de Varna (Flamme)",
+        "skills":{
+            "Flamme":"50%",
+            "Création d'eau":"1 par jour"
+        },
+        "bonus":[
+            "Connaissance des secrets",
+            "Droit"
+        ]
+    },
+    {
+        "name":"Magistrat",
+        "bonus":[
+            "Lire/Ecrire",
+            "Droit"
+        ]
+    }
+
+]

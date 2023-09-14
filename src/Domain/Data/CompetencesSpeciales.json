@@ -1,0 +1,62 @@
+[
+    {
+        "name":"Creer une potion",
+        "description":"A partir du moment ou l'alchimiste posséde un flacon en verre vide Vous pouvez tenter de créer un potion a partir de substance identifié, la création de potion entraine deux resultat: il créer une potion, il obtient les essences de la potion et peut refaire une potion s'il reussit le jet de des correspondant"
+    },
+    {
+        "name":"Identifier une substance",
+        "description":"Vous pouvez Identifier une substance pour connaitre plus ou moins l'utilité d'une chose"
+    },
+    {
+        "name":"Magnetite Capricieuse",
+        "description":"Vous pouvez attirer les objets métalliques dans un rayon de 10 m autour de vous. Les armes quittent les mains de leur porteur, les serrures se débloquent et les seaux s’envolent. En cas d’échec, vous obtenez l’effet inverse (les assaillants resserrent leur prise, les verrous se grippent, les seaux s’ancrent au sol), ajoutant un malus de -20 % à tout jet visant à les manipuler contre leur gré."
+    },
+    {
+        "name":"Chanceuse",
+        "description":"Vous pouvez transformer un échec en succès ou un échec critique en échec simple. Vous ne pouvez pas transformer un succès en succès critique."
+    },
+    {
+        "name":"Bagout Fulgurant",
+        "description":"Vous êtes littéralement capable de faire prendre des vessies pour des lanternes à votre interlocuteur ou votre interlocutrice. Ce dernier ou cette dernière croit sans discuter vos affirmations et se range à votre avis directement. Il ou elle n’en devient pas forcément un•e allié•e pour autant."
+    },
+    {
+        "name":"Modélistation",
+        "description":"Vous permet d'adapter le flot de magie brute à l'exploitation qu'en prévoit le magicien. "
+    },
+    {
+        "name":"Faveur d'Ina",
+        "description":"La déesse de la compassion vous a en sa sainte garde. Pour les dix prochains affrontements, vous ignorez la première blessure qui vous est infligée et ne subissez pas la perte de points de vie correspondante"
+    },
+    {
+        "name":"Voler la magie",
+        "description":"Vous pouver recuperer la carte que vient de jouer un autre magicien"
+    },
+    {
+        "name":"Sens de la traque",
+        "description":"Vous connaissez instinctivement l’orientation vers laquelle se tourner pour trouver un mage atteint de la folie de la fin. Vous ne pouvez vous focaliser sur un mage en particulier et votre sens de la traque peut tout à fait passer d’un mage à un autre en fonction de la proximité. Quand vous faites appel à cette capacité, faites votre jet sous Sens de la traque de sorte que SEUL LE MJ connaisse le résultat. Il vous indiquera alors la direction, sans que vous sachiez si elle est digne de foi ou non."
+    },
+    {
+        "name":"Mécènes peu regardants",
+        "description":"Vous êtes doué pour trouver des financements incongrus mais de confiance. Vous pouvez lever des fonds pour un investissement maximal égal à chaque fois au coût d’un petit navire de commerce"
+    },
+    {
+        "name":"Oreilles opportunes",
+        "description":"ous êtes au courant des rumeurs les plus pointues sur un sujet précis. Vous pouvez demander à votre MJ des renseignements sur un thème spécifique et ce dernier doit vous transmettre les éléments le concernant, à l’exception des points identifiés comme secrets. Vous savez en outre quelles sont les rumeurs les plus fondées"
+    },
+    {
+        "name": "bouclier",
+        "description":"Creer un champ de force individuel qui protege, comme une bulle le praticien de tout danger que ce  soit un rocher de plusieurs tonnes ou de la pluie froide. Bouclier est le deuxième sort le plus pratiqué à l'academie"
+    },
+    {
+        "name":"Invisibilisation",
+        "description":"À l’instar de nombreuses femmes d’Aqabah, vous pouvez devenir invisible aux yeux du monde. Vous êtes toujours là mais les gens ne font tout simplement pas attention à vous, à moins que vous ne tentiez une action marquante à leur encontre. Quand vous utilisez cette compétence, vous faites un jet sous Invisibilisation à chaque fois que vous quittez une pièce et/ou abordez un nouveau groupe de personnes. En cas d’échec, vous êtes automatiquement le centre de l’attention et la source de toutes les suspicions"
+    },
+    {
+        "name":"Flamme",
+        "description":"Crée une flamme de tout type, de la flamme de bougie à la boule de feu pour anéantir ou réchauffer c'est le sort le plus pratiqué à l'academie"
+    },
+    {
+        "name":"Création d'eau",
+        "description":"vous pouvez générer suffisamment d’eau pour hydrater un humain pendant une journée (environ 2 litres). Vous devez simplement prendre soin de bien vous sécher les mains après un tel miracle, pour éviter de parasiter la génération de flamme."
+    }
+]
