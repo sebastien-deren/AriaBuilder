@@ -8,15 +8,19 @@ use App\Domain\Model\Profession;
 use App\Repository\CompetenceRepository;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
+use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 class ProfessionFixture extends Fixture
 {
-    public function __construct(private string $rootDir, private CompetenceRepository $competenceRepository)
-    {
+    public function __construct(
+        #[Autowire("%kernel.project_dir%/data/")] private string $rootDir,
+        
+        private CompetenceRepository $competenceRepository
+    ) {
     }
     public function load(ObjectManager $manager): void
     {
-        $fileJson = \file_get_contents($this->rootDir . "/src/Domain/Data/Profession.json");
+        $fileJson = \file_get_contents($this->rootDir . "Profession.json");
         $professions = \json_decode($fileJson); // $product = new Product();
         foreach ($professions as $profession) {
             $professionEntity = new Profession();

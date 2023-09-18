@@ -6,6 +6,7 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Put;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Patch;
+use App\Domain\Model\Profession;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use App\Domain\Model\Caracteristique;
@@ -15,6 +16,7 @@ use App\Domain\Model\CompetencePersonnage;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\State\Personnage\PersonnagePatchStateProcessor;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
 #[ApiResource(
@@ -24,8 +26,9 @@ use Symfony\Component\Serializer\Annotation\Groups;
         new Get(),
         new GetCollection(),
         new Post(),
-        new Put(),
-        new Patch(),
+        new Patch(
+            processor: PersonnagePatchStateProcessor::class
+        ),
     ],
     paginationItemsPerPage: 10,
     denormalizationContext: [
@@ -37,10 +40,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
 )]
 class Personnage
 {
+    #[Groups(['personnage:read'])]
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
+
     #[Groups(['personnage:write', 'personnage:read'])]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
@@ -70,8 +75,12 @@ class Personnage
     private ?Caracteristique $caracteristique = null;
 
     #[Groups(['personnage:read'])]
-    #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class)]
+    #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class, cascade: ['persist', 'remove'])]
     private ?Collection $competence = null;
+
+    #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
+    #[ORM\ManyToOne(targetEntity: Profession::class)]
+    private ?Profession $profession = null;
 
     public function __construct()
     {
@@ -191,6 +200,18 @@ class Personnage
                 $competence->setPersonage(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getProfession(): ?Profession
+    {
+
+        return $this->profession;
+    }
+    public function setProfession(Profession $profession): static
+    {
+        $this->profession = $profession;
 
         return $this;
     }

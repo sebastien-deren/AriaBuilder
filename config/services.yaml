@@ -19,11 +19,7 @@ services:
       - "../src/DependencyInjection/"
       - "../src/Entity/"
       - "../src/Kernel.php"
-  #We'll need to make a parent class for fixtures who need json
   App\DataFixtures\CompetenceFixtures:
-    arguments:
-      - "%kernel.project_dir%"
-  App\DataFixtures\ProfessionFixture:
     arguments:
       - "%kernel.project_dir%"
 
