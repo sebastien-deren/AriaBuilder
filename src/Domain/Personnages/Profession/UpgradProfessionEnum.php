@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\EntityListener;
+namespace App\Domain\Personnages\Profession;
 
 enum UpgradProfessionEnum: int
 {

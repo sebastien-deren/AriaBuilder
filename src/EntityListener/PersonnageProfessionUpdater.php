@@ -18,7 +18,7 @@ use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
 use Doctrine\ORM\UnitOfWork;
 use Doctrine\Persistence\ObjectManager;
 
-#[AsEntityListener(event: Events::preUpdate, method: 'preupdate', entity: Personnage::class)]
+
 class PersonnageProfessionUpdater
 {
     public function __construct(private EntityManagerInterface $entityManagerInterface)
@@ -37,20 +37,17 @@ class PersonnageProfessionUpdater
             $preUpdateEventArgs->getOldValue('profession'),
             $competencePersonnage,
             UpgradProfessionEnum::Downgrade,
-            $preUpdateEventArgs->getObjectManager()
         );
         $this->updateProfession(
             $preUpdateEventArgs->getNewValue('profession'),
             $competencePersonnage,
             UpgradProfessionEnum::Upgrade,
-            $preUpdateEventArgs->getObjectManager()
         );
     }
     private function updateProfession(
         ?Profession $profession,
         Collection $competencesPersonnage,
         UpgradProfessionEnum $enum,
-        ObjectManager $objectManager
     ) {
         if (null === $profession) {
             return;
@@ -63,7 +60,7 @@ class PersonnageProfessionUpdater
                 $competencesProfession->contains($competence->getCompetence())
             )
             ->map(
-                function ($competence) use ($enum, $objectManager) {
+                function ($competence) use ($enum) {
                     $competence->setPourcentage($competence->getPourcentage() + $enum->value);
                 }
             );
