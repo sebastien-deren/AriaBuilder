@@ -44,7 +44,7 @@ final class ProfessionCompetenceUpdater
         */
     private function updateCompetences(
         ?Profession $profession,
-        CollectionCompetencePersonnage $competencesPersonnage,
+        Collection $competencesPersonnage,
         UpgradProfessionEnum $enum
     ): void {
         if (null === $profession) {

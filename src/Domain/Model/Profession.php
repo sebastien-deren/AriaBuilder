@@ -2,14 +2,16 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Api\QueryParameterValidator\Validator\Enum;
-use ApiPlatform\Metadata\ApiResource;
-use App\Domain\Model\CompetenceProfession;
-use App\Repository\ProfessionRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use App\Repository\ProfessionRepository;
+use App\Domain\Model\CompetenceProfession;
+use Doctrine\Common\Collections\Collection;
+use App\Domain\Collection\CollectionCompetence;
+use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
+use App\Domain\Collection\CollectionCompetenceInterface;
+use ApiPlatform\Api\QueryParameterValidator\Validator\Enum;
 
 #[ORM\Entity(repositoryClass: ProfessionRepository::class)]
 #[ApiResource()]
@@ -30,7 +32,7 @@ class Profession
 
     #[ORM\ManyToMany(targetEntity: Competence::class)]
     #[Groups('profession:read')]
-    private Collection $competenceProfessions;
+    private CollectionCompetence $competenceProfessions;
 
     public function __construct()
     {
@@ -57,7 +59,7 @@ class Profession
     /**
      * @return Collection<int, CompetenceProfession>
      */
-    public function getCompetenceProfessions(): Collection
+    public function getCompetenceProfessions(): CollectionCompetence
     {
         return $this->competenceProfessions;
     }
