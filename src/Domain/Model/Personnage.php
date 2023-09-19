@@ -12,11 +12,11 @@ use ApiPlatform\Metadata\ApiResource;
 use App\Domain\Model\Caracteristique;
 use ApiPlatform\Metadata\GetCollection;
 use App\Repository\PersonnageRepository;
+use App\State\PersonnageUpdaterProcessor;
 use App\Domain\Model\CompetencePersonnage;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
-use App\State\Personnage\PersonnagePatchStateProcessor;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
 #[ApiResource(
@@ -27,7 +27,7 @@ use App\State\Personnage\PersonnagePatchStateProcessor;
         new GetCollection(),
         new Post(),
         new Patch(
-            processor: PersonnagePatchStateProcessor::class
+            processor: PersonnageUpdaterProcessor::class
         ),
     ],
     paginationItemsPerPage: 10,

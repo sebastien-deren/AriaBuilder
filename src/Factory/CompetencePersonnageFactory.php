@@ -48,7 +48,6 @@ final class CompetencePersonnageFactory extends ModelFactory
     {
         return [
             'pourcentage' => self::faker()->randomNumber(2),
-            'competence' => CompetenceFactory::findOrCreate([]),
         ];
     }
 
