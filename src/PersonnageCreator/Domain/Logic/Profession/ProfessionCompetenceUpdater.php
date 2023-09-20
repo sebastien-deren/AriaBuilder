@@ -2,17 +2,15 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Personnages\Profession;
+namespace App\PersonnageCreator\Domain\Logic\Profession;
 
 use App\Domain\Model\Personnage;
-use App\Domain\Model\Profession;
-use App\Domain\Model\CompetencePersonnage;
+use App\PersonnageCreator\Domain\Model\Profession;
+use App\PersonnageCreator\Domain\Logic\Profession\UpgradProfessionEnum;
 use App\Domain\Personnages\CompetencePersonnage\CollectionCompetencePersonnage;
 use Doctrine\Common\Collections\Collection;
-use App\Domain\Personnages\Profession\UpgradProfessionEnum;
-use App\Domain\Personnages\CompetencePersonnage\CollectionCompetencePersonnageInterface;
 
-final class ProfessionCompetenceUpdater
+final class ProfessionCompetenceUpdater implements ProfessionCompetenceUpdaterInterface
 {
     public function updateCompetenceFromProfession(array $previousPersonnage, Personnage $currentPersonnage): void
     {
@@ -44,7 +42,7 @@ final class ProfessionCompetenceUpdater
         */
     private function updateCompetences(
         ?Profession $profession,
-        CollectionCompetencePersonnage $competencesPersonnage,
+        Collection $competencesPersonnage,
         UpgradProfessionEnum $enum
     ): void {
         if (null === $profession) {

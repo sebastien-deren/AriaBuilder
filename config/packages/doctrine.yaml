@@ -25,6 +25,10 @@ doctrine:
         dir: "%kernel.project_dir%/src/Entity"
         prefix: 'App\Entity'
         alias: App
+      Model:
+        is_bundle: false
+        dir: "%kernel.project_dir%/src/PersonnageCreator/Domain/Model"
+        prefix: 'App\PersonnageCreator\Domain\Model'
 
 when@test:
   doctrine:

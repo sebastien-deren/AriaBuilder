@@ -6,7 +6,6 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Put;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Patch;
-use App\Domain\Model\Profession;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use App\Domain\Model\Caracteristique;
@@ -15,6 +14,7 @@ use App\Repository\PersonnageRepository;
 use App\Domain\Model\CompetencePersonnage;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use App\PersonnageCreator\Domain\Model\Profession;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\State\Personnage\PersonnagePatchStateProcessor;
 

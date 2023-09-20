@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Personnages\Profession;
+namespace App\PersonnageCreator\Domain\Logic\Profession;
 
 use App\Domain\Model\Personnage;
 

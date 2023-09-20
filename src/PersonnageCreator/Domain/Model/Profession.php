@@ -1,35 +1,28 @@
 <?php
 
-namespace App\Domain\Model;
+namespace App\PersonnageCreator\Domain\Model;
 
-use ApiPlatform\Api\QueryParameterValidator\Validator\Enum;
-use ApiPlatform\Metadata\ApiResource;
-use App\Domain\Model\CompetenceProfession;
-use App\Repository\ProfessionRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Domain\Model\Competence;
 use Doctrine\ORM\Mapping as ORM;
-use Symfony\Component\Serializer\Annotation\Groups;
+use App\Domain\Model\CompetenceProfession;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
 
-#[ORM\Entity(repositoryClass: ProfessionRepository::class)]
-#[ApiResource()]
+#[ORM\Entity]
 class Profession
 {
-
+//App\PersonnageCreator\Infrastucture\Doctrine\Repository\DoctrineProfessionRepository
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-    #[Groups('profession:read')]
-    private ?int $id = null;
+    private int $id;
 
 
     #[ORM\Column(length: 255)]
-    #[Groups('profession:read')]
-    private ?string $nom = null;
+    private string $nom;
 
 
     #[ORM\ManyToMany(targetEntity: Competence::class)]
-    #[Groups('profession:read')]
     private Collection $competenceProfessions;
 
     public function __construct()
@@ -37,12 +30,12 @@ class Profession
         $this->competenceProfessions = new ArrayCollection();
     }
 
-    public function getId(): ?int
+    public function getId(): int
     {
         return $this->id;
     }
 
-    public function getNom(): ?string
+    public function getNom(): string
     {
         return $this->nom;
     }

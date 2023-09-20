@@ -72,6 +72,18 @@
             "config/packages/nelmio_cors.yaml"
         ]
     },
+    "phpstan/phpstan": {
+        "version": "1.10",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "1.0",
+            "ref": "f10b8054de1a94a3b9e8806a6453fd5c98491c44"
+        },
+        "files": [
+            "phpstan.dist.neon"
+        ]
+    },
     "phpunit/phpunit": {
         "version": "9.6",
         "recipe": {
@@ -85,6 +97,15 @@
             "phpunit.xml.dist",
             "tests/bootstrap.php"
         ]
+    },
+    "qossmic/deptrac-shim": {
+        "version": "1.0",
+        "recipe": {
+            "repo": "github.com/symfony/recipes-contrib",
+            "branch": "main",
+            "version": "0.19",
+            "ref": "3c3daab46226c37fc14e10faf81df737a3039d96"
+        }
     },
     "sensio/framework-extra-bundle": {
         "version": "6.2",
@@ -96,20 +117,6 @@
         },
         "files": [
             "config/packages/sensio_framework_extra.yaml"
-        ]
-    },
-    "phpunit/phpunit": {
-        "version": "9.6",
-        "recipe": {
-            "repo": "github.com/symfony/recipes",
-            "branch": "main",
-            "version": "9.6",
-            "ref": "7364a21d87e658eb363c5020c072ecfdc12e2326"
-        },
-        "files": [
-            ".env.test",
-            "phpunit.xml.dist",
-            "tests/bootstrap.php"
         ]
     },
     "symfony/console": {
@@ -215,6 +222,18 @@
         "files": [
             "config/packages/twig.yaml",
             "templates/base.html.twig"
+        ]
+    },
+    "symfony/uid": {
+        "version": "6.3",
+        "recipe": {
+            "repo": "github.com/symfony/recipes",
+            "branch": "main",
+            "version": "6.2",
+            "ref": "d294ad4add3e15d7eb1bae0221588ca89b38e558"
+        },
+        "files": [
+            "config/packages/uid.yaml"
         ]
     },
     "symfony/validator": {
