@@ -32,10 +32,11 @@ final class PersonnageUpdaterProcessor implements ProcessorInterface
         $uow = $this->entityManager->getUnitOfWork();
         $previousPersonnage = $uow->getOriginalEntityData($data);
         if (null !== $data->getProfession()) {
-            $this->professionUpdater->updateCompetenceFromProfession($previousPersonnage, $data);
+            $this->updateProfession($previousPersonnage, $data);
         }
 
         $result = $this->persistProcessor->process($data, $operation, $uriVariables, $context);
         return $data;
     }
+
 }

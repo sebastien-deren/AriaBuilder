@@ -46,7 +46,7 @@ class CompetencePersonnage
     #[ORM\Column]
     private ?int $id = null;
 
-    #[Groups("personnage:read", "personnage:write")]
+    #[Groups("personnage:read")]
     #[ORM\Column]
     private ?int $pourcentage = null;
 

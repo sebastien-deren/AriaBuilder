@@ -11,17 +11,12 @@ use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
 use App\Domain\Model\Caracteristique;
 use ApiPlatform\Metadata\GetCollection;
+use App\Repository\PersonnageRepository;
 use App\Domain\Model\CompetencePersonnage;
-use App\Domain\Personnages\CompetencePersonnage\CollectionCompetencePersonnage;
-use App\Domain\Personnages\CompetencePersonnage\CollectionCompetencePersonnageInterface;
-use App\Domain\Repository\PersonnageRepository;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use Symfony\Component\Serializer\Annotation\Groups;
 use App\State\Personnage\PersonnagePatchStateProcessor;
-use App\State\PersonnageUpdaterProcessor;
-
-use function Zenstruck\Foundry\repository;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
 #[ApiResource(
@@ -32,7 +27,7 @@ use function Zenstruck\Foundry\repository;
         new GetCollection(),
         new Post(),
         new Patch(
-            processor: PersonnageUpdaterProcessor::class
+            processor: PersonnagePatchStateProcessor::class
         ),
     ],
     paginationItemsPerPage: 10,
@@ -81,7 +76,7 @@ class Personnage
 
     #[Groups(['personnage:read'])]
     #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class, cascade: ['persist', 'remove'])]
-    private ?CollectionCompetencePersonnage $competence = null;
+    private ?Collection $competence = null;
 
     #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
     #[ORM\ManyToOne(targetEntity: Profession::class)]
@@ -180,9 +175,9 @@ class Personnage
     }
 
     /**
-     * @return CollectionCompetencePersonnage<int, CompetencePersonnage>
+     * @return Collection<int, CompetencePersonnage>
      */
-    public function getCompetence(): CollectionCompetencePersonnage
+    public function getCompetence(): Collection
     {
         return $this->competence;
     }
