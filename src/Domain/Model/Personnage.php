@@ -74,13 +74,14 @@ class Personnage
     #[ORM\OneToOne(inversedBy: 'personnage', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private ?Caracteristique $caracteristique = null;
 
-    #[Groups(['personnage:read'])]
+    #[Groups(['personnage:competence'])]
     #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class, cascade: ['persist', 'remove'])]
     private ?Collection $competence = null;
 
-    #[Groups()]
+    #[Groups(['personnage:read', 'personnage:write'])]
     #[ORM\ManyToMany(targetEntity: Background::class)]
-    private ?Collection $background;
+    private ?Collection $background = null;
+
     #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
     #[ORM\ManyToOne(targetEntity: Profession::class)]
     private ?Profession $profession = null;
