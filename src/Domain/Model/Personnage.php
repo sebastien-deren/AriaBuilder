@@ -73,9 +73,14 @@ class Personnage
     #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class)]
     private ?Collection $competence = null;
 
+    #[Groups()]
+    #[ORM\ManyToMany(targetEntity: Background::class)]
+    private ?Collection $background;
+
     public function __construct()
     {
         $this->competence = new ArrayCollection();
+        $this->background = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -193,5 +198,24 @@ class Personnage
         }
 
         return $this;
+    }
+    public function addBackground(Background $background): static
+    {
+        if (!$this->background->contains($background)) {
+            $this->background->add($background);
+        }
+        return $this;
+    }
+
+
+    public function removeBackground($background): static
+    {
+        $this->background->removeElement($background);
+        return $this;
+    }
+
+    public function getBackground(): Collection
+    {
+        return $this->background;
     }
 }
