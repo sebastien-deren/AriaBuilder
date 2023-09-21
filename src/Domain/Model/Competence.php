@@ -2,13 +2,31 @@
 
 namespace App\Domain\Model;
 
+use ApiPlatform\Metadata\Get;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Put;
+use App\Controller\BaseCompetence;
 use App\Repository\CompetenceRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetenceRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new GetCollection(
+            name: 'base Competence Collection',
+            uriTemplate: '/base_competence',
+            controller: BaseCompetence::class
+        ),
+        new GetCollection(),
+        new Post(),
+        new Put(),
+    ]
+)]
 class Competence
 {
     #[ORM\Id]
@@ -16,6 +34,7 @@ class Competence
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('personnage:read')]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 

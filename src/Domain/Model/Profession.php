@@ -7,7 +7,6 @@ use App\Repository\ProfessionRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ProfessionRepository::class)]
-#[ApiResource]
 class Profession
 {
     #[ORM\Id]

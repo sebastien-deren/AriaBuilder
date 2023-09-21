@@ -69,4 +69,11 @@ final class PersonnageFactory extends ModelFactory
     {
         return Personnage::class;
     }
+
+    public function characterized(): self
+    {
+        return $this->addState([
+            "caracteristique" => CaracteristiqueFactory::new()
+        ]);
+    }
 }
