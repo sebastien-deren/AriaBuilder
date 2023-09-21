@@ -1,6 +1,6 @@
 [
     {
-        "name": "Artisanat,Construire",
+        "name": "Artisanat/Contruire",
         "description": "permet de fabriquer des objets manuellement, pour peu que l’on dispose du matériel et des outils nécessaires.",
         "firstCharac": "Dexterite",
         "secondCharac": "Intelligence"
@@ -60,13 +60,13 @@
         "secondCharac": "Charisme"
     },
     {
-        "name": "Lire, écrire",
+        "name": "Lire/Ecrire",
         "description": "sans cette compétence, un héros ne peut absolument rien lire, pas même un panneau indicateur. Lire un livre nécessite une demi-journée par partie distincte.",
         "firstCharac": "Intelligence",
         "secondCharac": "Charisme"
     },
     {
-        "name": "Mentir, convaincre",
+        "name": "Mentir/Convaincre",
         "description": "plus subtil qu’Intimider, cette compétence vous permet de rallier votre auditoire à votre avis. Elle est utilisée dans toutes les négociations : commerciales, politiques, entourloupes, etc. Votre interlocuteur ou interlocutrice a droit un jet sous Psychologie pour ne pas se laisser faire.",
         "firstCharac": "Intelligence",
         "secondCharac": "Charisme"

@@ -72,10 +72,11 @@ final class CompetenceFactory extends ModelFactory
 
     public function based(): self
     {
+        $carac = ['Force', 'Intelligence', 'Charisme', 'Endurance', 'Dexterite'];
         return $this->addState([
             'isBaseCompetence' => true,
-            'firstCharac' => self::faker()->randomElement(['Force', 'Intelligence', 'Charisme', 'Endurance', 'Dexterite']),
-            'secondCharac' => self::faker()->randomElement(['Force', 'Intelligence', 'Charisme', 'Endurance', 'Dexterite']),
+            'firstCharac' => $carac[\rand(0, 4)],
+            'secondCharac' => $carac[\rand(0, 4)],
         ]);
     }
 }
