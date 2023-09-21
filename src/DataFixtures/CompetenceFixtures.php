@@ -14,8 +14,10 @@ use Doctrine\Bundle\FixturesBundle\Fixture;
 
 class CompetenceFixtures extends Fixture
 {
-    public function __construct(private string $rootDir, private LoggerInterface $logger)
-    {
+    public function __construct(
+        private string $rootDir,
+        private LoggerInterface $logger
+    ) {
     }
 
     public function load(ObjectManager $manager)

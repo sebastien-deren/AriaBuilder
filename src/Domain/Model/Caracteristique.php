@@ -70,7 +70,7 @@ class Caracteristique
     #[ORM\Column]
     private ?int $charisme = null;
 
-    #[ORM\Column]
+    #[ORM\Column(nullable: true)]
     private ?int $caracPoint = null;
 
     #[ORM\OneToOne(mappedBy: 'caracteristique', cascade: ['persist'])]

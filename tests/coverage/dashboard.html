@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+ <head>
+  <meta charset="UTF-8">
+  <title>Dashboard for /home/sebastien/Documents/AriaBuilder/AriaBuilderAPI/src</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link href="_css/bootstrap.min.css?v=9.2.27" rel="stylesheet" type="text/css">
+  <link href="_css/nv.d3.min.css?v=9.2.27" rel="stylesheet" type="text/css">
+  <link href="_css/style.css?v=9.2.27" rel="stylesheet" type="text/css">
+  <link href="_css/custom.css" rel="stylesheet" type="text/css">
+ </head>
+ <body>
+  <header>
+   <div class="container-fluid">
+    <div class="row">
+     <div class="col-md-12">
+      <nav aria-label="breadcrumb">
+       <ol class="breadcrumb">
+         <li class="breadcrumb-item"><a href="index.html">/home/sebastien/Documents/AriaBuilder/AriaBuilderAPI/src</a></li>
+         <li class="breadcrumb-item active">(Dashboard)</li>
+
+       </ol>
+      </nav>
+     </div>
+    </div>
+   </div>
+  </header>
+  <div class="container-fluid">
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Classes</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="classCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="classComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/BaseCompetence.php.html#13">App\Controller\BaseCompetence</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DTO/CharacProcessor.php.html#14">App\DTO\CharacProcessor</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/AppFixtures.php.html#8">App\DataFixtures\AppFixtures</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/CompetenceFixtures.php.html#15">App\DataFixtures\CompetenceFixtures</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/PersonnagesFixtures.php.html#11">App\DataFixtures\PersonnagesFixtures</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/CaracteristiqueRepository.php.html#17">App\Repository\CaracteristiqueRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/CompetenceProfessionRepository.php.html#17">App\Repository\CompetenceProfessionRepository</a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/CompetenceRepository.php.html#17">App\Repository\CompetenceRepository</a></td><td class="text-right">25%</td></tr>
+       <tr><td><a href="Domain/Model/Competence.php.html#16">App\Domain\Model\Competence</a></td><td class="text-right">62%</td></tr>
+       <tr><td><a href="Domain/Model/Profession.php.html#14">App\Domain\Model\Profession</a></td><td class="text-right">66%</td></tr>
+       <tr><td><a href="Domain/Personnages/Characteristiques/CharacBuilder.php.html#11">App\Domain\Personnages\Characteristiques\CharacBuilder</a></td><td class="text-right">70%</td></tr>
+       <tr><td><a href="Domain/Model/Caracteristique.php.html#16">App\Domain\Model\Caracteristique</a></td><td class="text-right">79%</td></tr>
+       <tr><td><a href="Domain/Personnages/Competences/Processors/AbstractProcessor.php.html#16">App\Domain\Personnages\Competences\Processors\AbstractProcessor</a></td><td class="text-right">80%</td></tr>
+       <tr><td><a href="DTO/CharacteristicsInput.php.html#7">App\DTO\CharacteristicsInput</a></td><td class="text-right">81%</td></tr>
+       <tr><td><a href="Domain/Model/Personnage.php.html#21">App\Domain\Model\Personnage</a></td><td class="text-right">82%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Class</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="DataFixtures/CompetenceFixtures.php.html#15">App\DataFixtures\CompetenceFixtures</a></td><td class="text-right">132</td></tr>
+       <tr><td><a href="Domain/Personnages/Characteristiques/CharacBuilder.php.html#11">App\Domain\Personnages\Characteristiques\CharacBuilder</a></td><td class="text-right">34</td></tr>
+       <tr><td><a href="Domain/Model/Personnage.php.html#21">App\Domain\Model\Personnage</a></td><td class="text-right">26</td></tr>
+       <tr><td><a href="Domain/Model/Caracteristique.php.html#16">App\Domain\Model\Caracteristique</a></td><td class="text-right">18</td></tr>
+       <tr><td><a href="Domain/Model/Profession.php.html#14">App\Domain\Model\Profession</a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Repository/CompetenceRepository.php.html#17">App\Repository\CompetenceRepository</a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-12">
+     <h2>Methods</h2>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Coverage Distribution</h3>
+     <div id="methodCoverageDistribution" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Complexity</h3>
+     <div id="methodComplexity" style="height: 300px;">
+       <svg></svg>
+     </div>
+    </div>
+   </div>
+   <div class="row">
+    <div class="col-md-6">
+     <h3>Insufficient Coverage</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right">Coverage</th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="Controller/BaseCompetence.php.html#16"><abbr title="App\Controller\BaseCompetence::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Controller/BaseCompetence.php.html#19"><abbr title="App\Controller\BaseCompetence::__invoke">__invoke</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DTO/CharacProcessor.php.html#16"><abbr title="App\DTO\CharacProcessor::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DTO/CharacProcessor.php.html#19"><abbr title="App\DTO\CharacProcessor::process">process</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DTO/CharacteristicsInput.php.html#58"><abbr title="App\DTO\CharacteristicsInput::getPersonnage">getPersonnage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DTO/CharacteristicsInput.php.html#68"><abbr title="App\DTO\CharacteristicsInput::setPersonnage">setPersonnage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/AppFixtures.php.html#10"><abbr title="App\DataFixtures\AppFixtures::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/CompetenceFixtures.php.html#17"><abbr title="App\DataFixtures\CompetenceFixtures::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/CompetenceFixtures.php.html#23"><abbr title="App\DataFixtures\CompetenceFixtures::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/CompetenceFixtures.php.html#40"><abbr title="App\DataFixtures\CompetenceFixtures::checkJson">checkJson</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="DataFixtures/PersonnagesFixtures.php.html#13"><abbr title="App\DataFixtures\PersonnagesFixtures::load">load</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Caracteristique.php.html#64"><abbr title="App\Domain\Model\Caracteristique::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Caracteristique.php.html#69"><abbr title="App\Domain\Model\Caracteristique::getForce">getForce</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Caracteristique.php.html#105"><abbr title="App\Domain\Model\Caracteristique::getIntelligence">getIntelligence</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Caracteristique.php.html#129"><abbr title="App\Domain\Model\Caracteristique::getCaracPoint">getCaracPoint</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Caracteristique.php.html#141"><abbr title="App\Domain\Model\Caracteristique::getPersonnage">getPersonnage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Competence.php.html#53"><abbr title="App\Domain\Model\Competence::getId">getId</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Competence.php.html#58"><abbr title="App\Domain\Model\Competence::getNom">getNom</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Competence.php.html#70"><abbr title="App\Domain\Model\Competence::getDescription">getDescription</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Competence.php.html#75"><abbr title="App\Domain\Model\Competence::setDescription">setDescription</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Competence.php.html#106"><abbr title="App\Domain\Model\Competence::isIsBaseCompetence">isIsBaseCompetence</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/CompetencePersonnage.php.html#76"><abbr title="App\Domain\Model\CompetencePersonnage::getPersonage">getPersonage</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Personnage.php.html#158"><abbr title="App\Domain\Model\Personnage::setPicture">setPicture</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Personnage.php.html#194"><abbr title="App\Domain\Model\Personnage::removeCompetence">removeCompetence</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Profession.php.html#45"><abbr title="App\Domain\Model\Profession::getNom">getNom</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Model/Profession.php.html#74"><abbr title="App\Domain\Model\Profession::removeCompetenceProfession">removeCompetenceProfession</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Personnages/Characteristiques/CharacBuilder.php.html#63"><abbr title="App\Domain\Personnages\Characteristiques\CharacBuilder::buildThreeDices">buildThreeDices</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Personnages/Characteristiques/CharacBuilder.php.html#91"><abbr title="App\Domain\Personnages\Characteristiques\CharacBuilder::checkThreeSets">checkThreeSets</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Domain/Personnages/Competences/Processors/AbstractProcessor.php.html#31"><abbr title="App\Domain\Personnages\Competences\Processors\AbstractProcessor::buildCollection">buildCollection</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/CaracteristiqueRepository.php.html#19"><abbr title="App\Repository\CaracteristiqueRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/CompetenceProfessionRepository.php.html#19"><abbr title="App\Repository\CompetenceProfessionRepository::__construct">__construct</abbr></a></td><td class="text-right">0%</td></tr>
+       <tr><td><a href="Repository/CompetenceRepository.php.html#23"><abbr title="App\Repository\CompetenceRepository::save">save</abbr></a></td><td class="text-right">0%</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+    <div class="col-md-6">
+     <h3>Project Risks</h3>
+     <div class="scrollbox">
+      <table class="table">
+       <thead>
+        <tr>
+         <th>Method</th>
+         <th class="text-right"><abbr title="Change Risk Anti-Patterns (CRAP) Index">CRAP</abbr></th>
+        </tr>
+       </thead>
+       <tbody>
+       <tr><td><a href="DataFixtures/CompetenceFixtures.php.html#40"><abbr title="App\DataFixtures\CompetenceFixtures::checkJson">checkJson</abbr></a></td><td class="text-right">56</td></tr>
+       <tr><td><a href="Domain/Personnages/Characteristiques/CharacBuilder.php.html#63"><abbr title="App\Domain\Personnages\Characteristiques\CharacBuilder::buildThreeDices">buildThreeDices</abbr></a></td><td class="text-right">42</td></tr>
+       <tr><td><a href="DataFixtures/CompetenceFixtures.php.html#23"><abbr title="App\DataFixtures\CompetenceFixtures::load">load</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/Model/Personnage.php.html#194"><abbr title="App\Domain\Model\Personnage::removeCompetence">removeCompetence</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/Personnages/Characteristiques/CharacBuilder.php.html#91"><abbr title="App\Domain\Personnages\Characteristiques\CharacBuilder::checkThreeSets">checkThreeSets</abbr></a></td><td class="text-right">12</td></tr>
+       <tr><td><a href="Domain/Model/Profession.php.html#74"><abbr title="App\Domain\Model\Profession::removeCompetenceProfession">removeCompetenceProfession</abbr></a></td><td class="text-right">6</td></tr>
+       <tr><td><a href="Repository/CompetenceRepository.php.html#23"><abbr title="App\Repository\CompetenceRepository::save">save</abbr></a></td><td class="text-right">6</td></tr>
+
+       </tbody>
+      </table>
+     </div>
+    </div>
+   </div>
+   <footer>
+    <hr/>
+    <p>
+     <small>Generated by <a href="https://github.com/sebastianbergmann/php-code-coverage" target="_top">php-code-coverage 9.2.27</a> using <a href="https://secure.php.net/" target="_top">PHP 8.2.10</a> and <a href="https://phpunit.de/">PHPUnit 9.6.11</a> at Mon Sep 18 13:37:50 UTC 2023.</small>
+    </p>
+   </footer>
+  </div>
+  <script src="_js/jquery.min.js?v=9.2.27" type="text/javascript"></script>
+  <script src="_js/d3.min.js?v=9.2.27" type="text/javascript"></script>
+  <script src="_js/nv.d3.min.js?v=9.2.27" type="text/javascript"></script>
+  <script type="text/javascript">
+$(document).ready(function() {
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#classCoverageDistribution svg')
+      .datum(getCoverageDistributionData([7,0,0,1,0,0,0,2,2,3,3,11], "Class Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.multiBarChart();
+    chart.tooltips(false)
+      .showControls(false)
+      .showLegend(false)
+      .reduceXTicks(false)
+      .staggerLabels(true)
+      .yAxis.tickFormat(d3.format('d'));
+
+    d3.select('#methodCoverageDistribution svg')
+      .datum(getCoverageDistributionData([32,0,0,0,0,0,0,0,0,0,2,89], "Method Coverage"))
+      .transition().duration(500).call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getCoverageDistributionData(data, label) {
+    var labels = [
+      '0%',
+      '0-10%',
+      '10-20%',
+      '20-30%',
+      '30-40%',
+      '40-50%',
+      '50-60%',
+      '60-70%',
+      '70-80%',
+      '80-90%',
+      '90-100%',
+      '100%'
+    ];
+    var values = [];
+    $.each(labels, function(key) {
+      values.push({x: labels[key], y: data[key]});
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Cyclomatic Complexity');
+
+    d3.select('#classComplexity svg')
+      .datum(getComplexityData([[0,2,"<a href=\"Controller\/BaseCompetence.php.html#13\">App\\Controller\\BaseCompetence<\/a>"],[0,2,"<a href=\"DTO\/CharacProcessor.php.html#14\">App\\DTO\\CharacProcessor<\/a>"],[81.25,7,"<a href=\"DTO\/CharacteristicsInput.php.html#7\">App\\DTO\\CharacteristicsInput<\/a>"],[100,0,"<a href=\"DTO\/Input\/Competence\/CalculusInput.php.html#7\">App\\DTO\\Input\\Competence\\CalculusInput<\/a>"],[100,0,"<a href=\"DTO\/Input\/Competence\/CompetenceInputAbstract.php.html#7\">App\\DTO\\Input\\Competence\\CompetenceInputAbstract<\/a>"],[0,1,"<a href=\"DataFixtures\/AppFixtures.php.html#8\">App\\DataFixtures\\AppFixtures<\/a>"],[0,11,"<a href=\"DataFixtures\/CompetenceFixtures.php.html#15\">App\\DataFixtures\\CompetenceFixtures<\/a>"],[0,1,"<a href=\"DataFixtures\/PersonnagesFixtures.php.html#11\">App\\DataFixtures\\PersonnagesFixtures<\/a>"],[100,4,"<a href=\"DataFixtures\/ProfessionFixture.php.html#16\">App\\DataFixtures\\ProfessionFixture<\/a>"],[79.16666666666666,16,"<a href=\"Domain\/Model\/Caracteristique.php.html#16\">App\\Domain\\Model\\Caracteristique<\/a>"],[62.5,11,"<a href=\"Domain\/Model\/Competence.php.html#16\">App\\Domain\\Model\\Competence<\/a>"],[90,7,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#17\">App\\Domain\\Model\\CompetencePersonnage<\/a>"],[82.85714285714286,24,"<a href=\"Domain\/Model\/Personnage.php.html#21\">App\\Domain\\Model\\Personnage<\/a>"],[66.66666666666666,9,"<a href=\"Domain\/Model\/Profession.php.html#14\">App\\Domain\\Model\\Profession<\/a>"],[70.58823529411765,22,"<a href=\"Domain\/Personnages\/Characteristiques\/CharacBuilder.php.html#11\">App\\Domain\\Personnages\\Characteristiques\\CharacBuilder<\/a>"],[80,3,"<a href=\"Domain\/Personnages\/Competences\/Processors\/AbstractProcessor.php.html#16\">App\\Domain\\Personnages\\Competences\\Processors\\AbstractProcessor<\/a>"],[92.85714285714286,4,"<a href=\"Domain\/Personnages\/Competences\/Processors\/CalculusProcessor.php.html#14\">App\\Domain\\Personnages\\Competences\\Processors\\CalculusProcessor<\/a>"],[96.55172413793103,5,"<a href=\"EntityListener\/PersonnageProfessionUpdater.php.html#21\">App\\EntityListener\\PersonnageProfessionUpdater<\/a>"],[100,4,"<a href=\"Factory\/CaracteristiqueFactory.php.html#30\">App\\Factory\\CaracteristiqueFactory<\/a>"],[100,5,"<a href=\"Factory\/CompetenceFactory.php.html#33\">App\\Factory\\CompetenceFactory<\/a>"],[100,4,"<a href=\"Factory\/CompetencePersonnageFactory.php.html#30\">App\\Factory\\CompetencePersonnageFactory<\/a>"],[100,6,"<a href=\"Factory\/PersonnageFactory.php.html#31\">App\\Factory\\PersonnageFactory<\/a>"],[100,5,"<a href=\"Factory\/ProfessionFactory.php.html#31\">App\\Factory\\ProfessionFactory<\/a>"],[0,1,"<a href=\"Repository\/CaracteristiqueRepository.php.html#17\">App\\Repository\\CaracteristiqueRepository<\/a>"],[100,1,"<a href=\"Repository\/CompetencePersonnageRepository.php.html#18\">App\\Repository\\CompetencePersonnageRepository<\/a>"],[0,1,"<a href=\"Repository\/CompetenceProfessionRepository.php.html#17\">App\\Repository\\CompetenceProfessionRepository<\/a>"],[25,3,"<a href=\"Repository\/CompetenceRepository.php.html#17\">App\\Repository\\CompetenceRepository<\/a>"],[100,1,"<a href=\"Repository\/PersonnageRepository.php.html#17\">App\\Repository\\PersonnageRepository<\/a>"],[100,1,"<a href=\"Repository\/ProfessionRepository.php.html#17\">App\\Repository\\ProfessionRepository<\/a>"]], 'Class Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  nv.addGraph(function() {
+    var chart = nv.models.scatterChart()
+      .showDistX(true)
+      .showDistY(true)
+      .showLegend(false)
+      .forceX([0, 100]);
+    chart.tooltipContent(function(graph) {
+      return '<p>' + graph.point.class + '</p>';
+    });
+
+    chart.xAxis.axisLabel('Code Coverage (in percent)');
+    chart.yAxis.axisLabel('Method Complexity');
+
+    d3.select('#methodComplexity svg')
+      .datum(getComplexityData([[0,1,"<a href=\"Controller\/BaseCompetence.php.html#16\">App\\Controller\\BaseCompetence::__construct<\/a>"],[0,1,"<a href=\"Controller\/BaseCompetence.php.html#19\">App\\Controller\\BaseCompetence::__invoke<\/a>"],[0,1,"<a href=\"DTO\/CharacProcessor.php.html#16\">App\\DTO\\CharacProcessor::__construct<\/a>"],[0,1,"<a href=\"DTO\/CharacProcessor.php.html#19\">App\\DTO\\CharacProcessor::process<\/a>"],[100,1,"<a href=\"DTO\/CharacteristicsInput.php.html#27\">App\\DTO\\CharacteristicsInput::getRules<\/a>"],[100,1,"<a href=\"DTO\/CharacteristicsInput.php.html#37\">App\\DTO\\CharacteristicsInput::setRules<\/a>"],[100,1,"<a href=\"DTO\/CharacteristicsInput.php.html#44\">App\\DTO\\CharacteristicsInput::toArray<\/a>"],[0,1,"<a href=\"DTO\/CharacteristicsInput.php.html#58\">App\\DTO\\CharacteristicsInput::getPersonnage<\/a>"],[0,1,"<a href=\"DTO\/CharacteristicsInput.php.html#68\">App\\DTO\\CharacteristicsInput::setPersonnage<\/a>"],[100,1,"<a href=\"DTO\/CharacteristicsInput.php.html#78\">App\\DTO\\CharacteristicsInput::getDices<\/a>"],[100,1,"<a href=\"DTO\/CharacteristicsInput.php.html#88\">App\\DTO\\CharacteristicsInput::setDices<\/a>"],[0,1,"<a href=\"DataFixtures\/AppFixtures.php.html#10\">App\\DataFixtures\\AppFixtures::load<\/a>"],[0,1,"<a href=\"DataFixtures\/CompetenceFixtures.php.html#17\">App\\DataFixtures\\CompetenceFixtures::__construct<\/a>"],[0,3,"<a href=\"DataFixtures\/CompetenceFixtures.php.html#23\">App\\DataFixtures\\CompetenceFixtures::load<\/a>"],[0,7,"<a href=\"DataFixtures\/CompetenceFixtures.php.html#40\">App\\DataFixtures\\CompetenceFixtures::checkJson<\/a>"],[0,1,"<a href=\"DataFixtures\/PersonnagesFixtures.php.html#13\">App\\DataFixtures\\PersonnagesFixtures::load<\/a>"],[100,1,"<a href=\"DataFixtures\/ProfessionFixture.php.html#18\">App\\DataFixtures\\ProfessionFixture::__construct<\/a>"],[100,3,"<a href=\"DataFixtures\/ProfessionFixture.php.html#24\">App\\DataFixtures\\ProfessionFixture::load<\/a>"],[0,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#64\">App\\Domain\\Model\\Caracteristique::getId<\/a>"],[0,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#69\">App\\Domain\\Model\\Caracteristique::getForce<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#74\">App\\Domain\\Model\\Caracteristique::setForce<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#81\">App\\Domain\\Model\\Caracteristique::getEndurance<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#86\">App\\Domain\\Model\\Caracteristique::setEndurance<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#93\">App\\Domain\\Model\\Caracteristique::getDexterite<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#98\">App\\Domain\\Model\\Caracteristique::setDexterite<\/a>"],[0,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#105\">App\\Domain\\Model\\Caracteristique::getIntelligence<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#110\">App\\Domain\\Model\\Caracteristique::setIntelligence<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#117\">App\\Domain\\Model\\Caracteristique::getCharisme<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#122\">App\\Domain\\Model\\Caracteristique::setCharisme<\/a>"],[0,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#129\">App\\Domain\\Model\\Caracteristique::getCaracPoint<\/a>"],[100,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#134\">App\\Domain\\Model\\Caracteristique::setCaracPoint<\/a>"],[0,1,"<a href=\"Domain\/Model\/Caracteristique.php.html#141\">App\\Domain\\Model\\Caracteristique::getPersonnage<\/a>"],[100,2,"<a href=\"Domain\/Model\/Caracteristique.php.html#146\">App\\Domain\\Model\\Caracteristique::setPersonnage<\/a>"],[0,1,"<a href=\"Domain\/Model\/Competence.php.html#53\">App\\Domain\\Model\\Competence::getId<\/a>"],[0,1,"<a href=\"Domain\/Model\/Competence.php.html#58\">App\\Domain\\Model\\Competence::getNom<\/a>"],[100,1,"<a href=\"Domain\/Model\/Competence.php.html#63\">App\\Domain\\Model\\Competence::setNom<\/a>"],[0,1,"<a href=\"Domain\/Model\/Competence.php.html#70\">App\\Domain\\Model\\Competence::getDescription<\/a>"],[0,1,"<a href=\"Domain\/Model\/Competence.php.html#75\">App\\Domain\\Model\\Competence::setDescription<\/a>"],[100,1,"<a href=\"Domain\/Model\/Competence.php.html#82\">App\\Domain\\Model\\Competence::getFirstCharac<\/a>"],[100,1,"<a href=\"Domain\/Model\/Competence.php.html#87\">App\\Domain\\Model\\Competence::setFirstCharac<\/a>"],[100,1,"<a href=\"Domain\/Model\/Competence.php.html#94\">App\\Domain\\Model\\Competence::getSecondCharac<\/a>"],[100,1,"<a href=\"Domain\/Model\/Competence.php.html#99\">App\\Domain\\Model\\Competence::setSecondCharac<\/a>"],[0,1,"<a href=\"Domain\/Model\/Competence.php.html#106\">App\\Domain\\Model\\Competence::isIsBaseCompetence<\/a>"],[100,1,"<a href=\"Domain\/Model\/Competence.php.html#111\">App\\Domain\\Model\\Competence::setIsBaseCompetence<\/a>"],[100,1,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#59\">App\\Domain\\Model\\CompetencePersonnage::getId<\/a>"],[100,1,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#64\">App\\Domain\\Model\\CompetencePersonnage::getPourcentage<\/a>"],[100,1,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#69\">App\\Domain\\Model\\CompetencePersonnage::setPourcentage<\/a>"],[0,1,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#76\">App\\Domain\\Model\\CompetencePersonnage::getPersonage<\/a>"],[100,1,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#81\">App\\Domain\\Model\\CompetencePersonnage::setPersonage<\/a>"],[100,1,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#88\">App\\Domain\\Model\\CompetencePersonnage::getCompetence<\/a>"],[100,1,"<a href=\"Domain\/Model\/CompetencePersonnage.php.html#93\">App\\Domain\\Model\\CompetencePersonnage::setCompetence<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#84\">App\\Domain\\Model\\Personnage::__construct<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#89\">App\\Domain\\Model\\Personnage::getId<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#94\">App\\Domain\\Model\\Personnage::getNom<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#99\">App\\Domain\\Model\\Personnage::setNom<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#106\">App\\Domain\\Model\\Personnage::getPrenom<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#110\">App\\Domain\\Model\\Personnage::setPrenom<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#117\">App\\Domain\\Model\\Personnage::getAge<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#122\">App\\Domain\\Model\\Personnage::setAge<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#129\">App\\Domain\\Model\\Personnage::getGenie<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#134\">App\\Domain\\Model\\Personnage::setGenie<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#141\">App\\Domain\\Model\\Personnage::getSociete<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#146\">App\\Domain\\Model\\Personnage::setSociete<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#153\">App\\Domain\\Model\\Personnage::getPicture<\/a>"],[0,1,"<a href=\"Domain\/Model\/Personnage.php.html#158\">App\\Domain\\Model\\Personnage::setPicture<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#165\">App\\Domain\\Model\\Personnage::getCaracteristique<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#170\">App\\Domain\\Model\\Personnage::setCaracteristique<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#179\">App\\Domain\\Model\\Personnage::getCompetence<\/a>"],[100,2,"<a href=\"Domain\/Model\/Personnage.php.html#184\">App\\Domain\\Model\\Personnage::addCompetence<\/a>"],[0,3,"<a href=\"Domain\/Model\/Personnage.php.html#194\">App\\Domain\\Model\\Personnage::removeCompetence<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#206\">App\\Domain\\Model\\Personnage::getProfession<\/a>"],[100,1,"<a href=\"Domain\/Model\/Personnage.php.html#211\">App\\Domain\\Model\\Personnage::setProfession<\/a>"],[100,1,"<a href=\"Domain\/Model\/Profession.php.html#35\">App\\Domain\\Model\\Profession::__construct<\/a>"],[100,1,"<a href=\"Domain\/Model\/Profession.php.html#40\">App\\Domain\\Model\\Profession::getId<\/a>"],[0,1,"<a href=\"Domain\/Model\/Profession.php.html#45\">App\\Domain\\Model\\Profession::getNom<\/a>"],[100,1,"<a href=\"Domain\/Model\/Profession.php.html#50\">App\\Domain\\Model\\Profession::setNom<\/a>"],[100,1,"<a href=\"Domain\/Model\/Profession.php.html#60\">App\\Domain\\Model\\Profession::getCompetenceProfessions<\/a>"],[100,2,"<a href=\"Domain\/Model\/Profession.php.html#65\">App\\Domain\\Model\\Profession::addCompetenceProfession<\/a>"],[0,2,"<a href=\"Domain\/Model\/Profession.php.html#74\">App\\Domain\\Model\\Profession::removeCompetenceProfession<\/a>"],[100,1,"<a href=\"Domain\/Personnages\/Characteristiques\/CharacBuilder.php.html#14\">App\\Domain\\Personnages\\Characteristiques\\CharacBuilder::build<\/a>"],[100,5,"<a href=\"Domain\/Personnages\/Characteristiques\/CharacBuilder.php.html#23\">App\\Domain\\Personnages\\Characteristiques\\CharacBuilder::buildPoint<\/a>"],[100,6,"<a href=\"Domain\/Personnages\/Characteristiques\/CharacBuilder.php.html#45\">App\\Domain\\Personnages\\Characteristiques\\CharacBuilder::buildDice<\/a>"],[0,6,"<a href=\"Domain\/Personnages\/Characteristiques\/CharacBuilder.php.html#63\">App\\Domain\\Personnages\\Characteristiques\\CharacBuilder::buildThreeDices<\/a>"],[100,1,"<a href=\"Domain\/Personnages\/Characteristiques\/CharacBuilder.php.html#81\">App\\Domain\\Personnages\\Characteristiques\\CharacBuilder::createTwenty<\/a>"],[0,3,"<a href=\"Domain\/Personnages\/Characteristiques\/CharacBuilder.php.html#91\">App\\Domain\\Personnages\\Characteristiques\\CharacBuilder::checkThreeSets<\/a>"],[100,1,"<a href=\"Domain\/Personnages\/Competences\/Processors\/AbstractProcessor.php.html#19\">App\\Domain\\Personnages\\Competences\\Processors\\AbstractProcessor::__construct<\/a>"],[100,1,"<a href=\"Domain\/Personnages\/Competences\/Processors\/AbstractProcessor.php.html#25\">App\\Domain\\Personnages\\Competences\\Processors\\AbstractProcessor::process<\/a>"],[0,1,"<a href=\"Domain\/Personnages\/Competences\/Processors\/AbstractProcessor.php.html#31\">App\\Domain\\Personnages\\Competences\\Processors\\AbstractProcessor::buildCollection<\/a>"],[92.85714285714286,4,"<a href=\"Domain\/Personnages\/Competences\/Processors\/CalculusProcessor.php.html#20\">App\\Domain\\Personnages\\Competences\\Processors\\CalculusProcessor::buildCollection<\/a>"],[100,1,"<a href=\"EntityListener\/PersonnageProfessionUpdater.php.html#24\">App\\EntityListener\\PersonnageProfessionUpdater::__construct<\/a>"],[93.33333333333333,2,"<a href=\"EntityListener\/PersonnageProfessionUpdater.php.html#28\">App\\EntityListener\\PersonnageProfessionUpdater::preUpdate<\/a>"],[100,2,"<a href=\"EntityListener\/PersonnageProfessionUpdater.php.html#47\">App\\EntityListener\\PersonnageProfessionUpdater::updateProfession<\/a>"],[100,1,"<a href=\"Factory\/CaracteristiqueFactory.php.html#37\">App\\Factory\\CaracteristiqueFactory::__construct<\/a>"],[100,1,"<a href=\"Factory\/CaracteristiqueFactory.php.html#47\">App\\Factory\\CaracteristiqueFactory::getDefaults<\/a>"],[100,1,"<a href=\"Factory\/CaracteristiqueFactory.php.html#63\">App\\Factory\\CaracteristiqueFactory::initialize<\/a>"],[100,1,"<a href=\"Factory\/CaracteristiqueFactory.php.html#70\">App\\Factory\\CaracteristiqueFactory::getClass<\/a>"],[100,1,"<a href=\"Factory\/CompetenceFactory.php.html#40\">App\\Factory\\CompetenceFactory::__construct<\/a>"],[100,1,"<a href=\"Factory\/CompetenceFactory.php.html#50\">App\\Factory\\CompetenceFactory::getDefaults<\/a>"],[100,1,"<a href=\"Factory\/CompetenceFactory.php.html#61\">App\\Factory\\CompetenceFactory::initialize<\/a>"],[100,1,"<a href=\"Factory\/CompetenceFactory.php.html#68\">App\\Factory\\CompetenceFactory::getClass<\/a>"],[100,1,"<a href=\"Factory\/CompetenceFactory.php.html#73\">App\\Factory\\CompetenceFactory::based<\/a>"],[100,1,"<a href=\"Factory\/CompetencePersonnageFactory.php.html#37\">App\\Factory\\CompetencePersonnageFactory::__construct<\/a>"],[100,1,"<a href=\"Factory\/CompetencePersonnageFactory.php.html#47\">App\\Factory\\CompetencePersonnageFactory::getDefaults<\/a>"],[100,1,"<a href=\"Factory\/CompetencePersonnageFactory.php.html#58\">App\\Factory\\CompetencePersonnageFactory::initialize<\/a>"],[100,1,"<a href=\"Factory\/CompetencePersonnageFactory.php.html#65\">App\\Factory\\CompetencePersonnageFactory::getClass<\/a>"],[100,1,"<a href=\"Factory\/PersonnageFactory.php.html#38\">App\\Factory\\PersonnageFactory::__construct<\/a>"],[100,1,"<a href=\"Factory\/PersonnageFactory.php.html#48\">App\\Factory\\PersonnageFactory::getDefaults<\/a>"],[100,1,"<a href=\"Factory\/PersonnageFactory.php.html#62\">App\\Factory\\PersonnageFactory::initialize<\/a>"],[100,1,"<a href=\"Factory\/PersonnageFactory.php.html#69\">App\\Factory\\PersonnageFactory::getClass<\/a>"],[100,1,"<a href=\"Factory\/PersonnageFactory.php.html#74\">App\\Factory\\PersonnageFactory::characterized<\/a>"],[100,1,"<a href=\"Factory\/PersonnageFactory.php.html#80\">App\\Factory\\PersonnageFactory::skilled<\/a>"],[100,1,"<a href=\"Factory\/ProfessionFactory.php.html#38\">App\\Factory\\ProfessionFactory::__construct<\/a>"],[100,1,"<a href=\"Factory\/ProfessionFactory.php.html#48\">App\\Factory\\ProfessionFactory::getDefaults<\/a>"],[100,1,"<a href=\"Factory\/ProfessionFactory.php.html#58\">App\\Factory\\ProfessionFactory::initialize<\/a>"],[100,1,"<a href=\"Factory\/ProfessionFactory.php.html#65\">App\\Factory\\ProfessionFactory::getClass<\/a>"],[100,1,"<a href=\"Factory\/ProfessionFactory.php.html#69\">App\\Factory\\ProfessionFactory::skilled<\/a>"],[0,1,"<a href=\"Repository\/CaracteristiqueRepository.php.html#19\">App\\Repository\\CaracteristiqueRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/CompetencePersonnageRepository.php.html#20\">App\\Repository\\CompetencePersonnageRepository::__construct<\/a>"],[0,1,"<a href=\"Repository\/CompetenceProfessionRepository.php.html#19\">App\\Repository\\CompetenceProfessionRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/CompetenceRepository.php.html#19\">App\\Repository\\CompetenceRepository::__construct<\/a>"],[0,2,"<a href=\"Repository\/CompetenceRepository.php.html#23\">App\\Repository\\CompetenceRepository::save<\/a>"],[100,1,"<a href=\"Repository\/PersonnageRepository.php.html#19\">App\\Repository\\PersonnageRepository::__construct<\/a>"],[100,1,"<a href=\"Repository\/ProfessionRepository.php.html#19\">App\\Repository\\ProfessionRepository::__construct<\/a>"]], 'Method Complexity'))
+      .transition()
+      .duration(500)
+      .call(chart);
+
+    nv.utils.windowResize(chart.update);
+
+    return chart;
+  });
+
+  function getComplexityData(data, label) {
+    var values = [];
+    $.each(data, function(key) {
+      var value = Math.round(data[key][0]*100) / 100;
+      values.push({
+        x: value,
+        y: data[key][1],
+        class: data[key][2],
+        size: 0.05,
+        shape: 'diamond'
+      });
+    });
+
+    return [
+      {
+        key: label,
+        values: values,
+        color: "#4572A7"
+      }
+    ];
+  }
+});
+  </script>
+ </body>
+</html>

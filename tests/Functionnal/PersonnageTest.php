@@ -2,18 +2,28 @@
 
 namespace App\Tests\Functionnal;
 
+use ApiPlatform\OpenApi\Model\Header;
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use ApiPlatform\Util\CachedTrait;
+use App\Domain\Model\Competence;
+use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
+use App\Factory\CompetenceFactory;
+use App\Factory\CompetencePersonnageFactory;
 use App\Factory\PersonnageFactory;
-use App\Repository\PersonnageRepository;
+use App\Factory\ProfessionFactory;
+use Doctrine\ORM\EntityManager;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
 class PersonnageTest extends ApiTestCase
 {
     use ResetDatabase;
+
+    private EntityManager $entityManager;
     public function setUp(): void
     {
+        static::bootKernel();
+        $this->entityManager = static::$kernel->getContainer()->get('doctrine.orm.entity_manager');
     }
     public function testGetCollection(): void
     {
@@ -46,5 +56,29 @@ class PersonnageTest extends ApiTestCase
             ];
         $response = static::createClient()->request('POST', 'api/personnages', ["headers" => ['Accept' => 'application/ld+json'], "json" => $personnage]);
         $this->assertResponseStatusCodeSame(201);
+    }
+    public function testPatchProfession(): void
+    {
+        $competence = CompetenceFactory::createOne();
+        $personnage = PersonnageFactory::createOne([]);
+        $competencePersonnage = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competence]);
+        $profession = ProfessionFactory::createOne(['competenceProfessions' => array($competence)]);
+        $oldPercentage = $competencePersonnage->getPourcentage();
+        $response = static::createClient()->request(
+            'PATCH',
+            '/api/personnages/' . $personnage->getId(),
+            [
+                'json' => ["profession" => 'api/professions/' . $profession->getId()],
+                'headers' => ['Content-Type' => 'application/merge-patch+json'],
+            ]
+
+        );
+
+        //dd($response->getContent());
+        $this->assertResponseIsSuccessful();
+        $this->assertJsonContains(['profession' => '/api/professions/1']);
+        //$this->assertJsonContains(['pourcentage' => 20]);
+        $this->assertEquals($competencePersonnage->getPourcentage(), ($oldPercentage + 10));
+        $this->assertEquals($personnage->getProfession(), $profession);
     }
 }

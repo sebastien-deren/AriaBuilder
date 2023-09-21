@@ -2,6 +2,7 @@
 
 namespace App\Factory;
 
+use App\Domain\Model\Competence;
 use App\Domain\Model\Personnage;
 use App\Repository\PersonnageRepository;
 use Zenstruck\Foundry\ModelFactory;
@@ -75,5 +76,13 @@ final class PersonnageFactory extends ModelFactory
         return $this->addState([
             "caracteristique" => CaracteristiqueFactory::new()
         ]);
+    }
+    public function skilled(): self
+    {
+        return $this->characterized()->addState(
+            ["competence" => CompetencePersonnageFactory::findOrCreate(
+                ["competence" => CompetenceFactory::findOrCreate(["nom" => 'nom'])]
+            )]
+        );
     }
 }

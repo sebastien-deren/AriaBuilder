@@ -19,7 +19,7 @@ doctrine:
         is_bundle: false
         dir: "%kernel.project_dir%/src/Domain/Model"
         prefix: 'App\Domain\Model'
-        alias: CharacterModel
+        alias: App\Repository
       App:
         is_bundle: false
         dir: "%kernel.project_dir%/src/Entity"
