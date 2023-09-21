@@ -13,4 +13,6 @@ interface ProfessionRepositoryInterface extends RepositoryInterface
      * @return <int,Profession>
      */
     public function getAll(): array;
+
+    public function getWithPagination(int $page, int $limit): iterable;
 }

@@ -4,15 +4,11 @@ declare(strict_types=1);
 
 namespace App\PersonnageCreator\Application\Query;
 
-use App\PersonnageCreator\Domain\Repository\ProfessionRepositoryInterface;
-
-class FindProfessionsQuery
+class FindProfessionsQuery implements QueryInterface
 {
-    public function __construct(private ProfessionRepositoryInterface $professionRepository)
-    {
-    }
-    public function ask(mixed $item = null)
-    {
-        return $this->professionRepository->getAll();
+    public function __construct(
+        public int $page,
+        public int $limit
+    ) {
     }
 }

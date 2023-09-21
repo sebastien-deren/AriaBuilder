@@ -29,6 +29,7 @@ doctrine:
         is_bundle: false
         dir: "%kernel.project_dir%/src/PersonnageCreator/Domain/Model"
         prefix: 'App\PersonnageCreator\Domain\Model'
+        alias: Model
 
 when@test:
   doctrine:

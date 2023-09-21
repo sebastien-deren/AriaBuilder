@@ -11,23 +11,26 @@ use Doctrine\Common\Collections\ArrayCollection;
 #[ORM\Entity]
 class Profession
 {
-//App\PersonnageCreator\Infrastucture\Doctrine\Repository\DoctrineProfessionRepository
+    //App\PersonnageCreator\Infrastructure\Doctrine\Repository\DoctrineProfessionRepository
+
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private int $id;
+    public function __construct(
+
+        #[ORM\Column(length: 255)]
+        private string $nom,
 
 
-    #[ORM\Column(length: 255)]
-    private string $nom;
+        /**
+         * @param Collection<Competence> $competenceProfessions
+         */
+        #[ORM\ManyToMany(targetEntity: Competence::class)]
+        private Collection $competenceProfessions,
 
 
-    #[ORM\ManyToMany(targetEntity: Competence::class)]
-    private Collection $competenceProfessions;
-
-    public function __construct()
-    {
-        $this->competenceProfessions = new ArrayCollection();
+    ) {
     }
 
     public function getId(): int
@@ -48,7 +51,7 @@ class Profession
     }
 
     /**
-     * @return Collection<int, CompetenceProfession>
+     * @return Collection<int, Competence>
      */
     public function getCompetenceProfessions(): Collection
     {
@@ -71,5 +74,11 @@ class Profession
         }
 
         return $this;
+    }
+
+    public function __toString()
+    {
+        //evidement on veut pas ça dans notre domaine on est pas des porcs mais on test si ça marche
+        return 'api/professions/';
     }
 }

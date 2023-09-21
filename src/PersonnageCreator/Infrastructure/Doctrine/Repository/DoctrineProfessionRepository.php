@@ -1,8 +1,10 @@
 <?php
 
-namespace App\PersonnageCreator\Infrastucture\Doctrine\Repository;
+namespace App\PersonnageCreator\Infrastructure\Doctrine\Repository;
 
 use Doctrine\Persistence\ManagerRegistry;
+use ApiPlatform\Api\IriConverterInterface;
+use Doctrine\ORM\Tools\Pagination\Paginator;
 use App\PersonnageCreator\Domain\Model\Profession;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\PersonnageCreator\Domain\Repository\ProfessionRepositoryInterface;
@@ -26,12 +28,23 @@ class DoctrineProfessionRepository extends ServiceEntityRepository implements Pr
     {
         return $this->find($id);
     }
-    /**
-     * @return Profession
-     */
     public function getAll(): array
     {
-        $pagination = (new Paginator($this->findBy([])));
+        return $this->findAll();
+        //$pagination = (new Paginator($this->findBy([])));
+    }
+    public function getWithPagination(int $page, int $limit): iterable
+    {
+        $dql = "SELECT p FROM Model:Profession p";
+        $query = $this->getEntityManager()->createQuery($dql)
+            ->setFirstResult($page)
+            ->setMaxResults($limit);
+
+        $paginator = new Paginator($query);
+
+        $c = count($paginator);
+
+        return $paginator;
     }
     //    /**
     //     * @return Profession[] Returns an array of Profession objects

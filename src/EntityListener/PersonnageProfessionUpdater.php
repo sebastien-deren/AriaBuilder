@@ -27,7 +27,6 @@ class PersonnageProfessionUpdater
 
     public function preUpdate(Personnage $personnage, PreUpdateEventArgs $preUpdateEventArgs)
     {
-        dump('PERSONNAGE UPDATE');
         if (!$preUpdateEventArgs->hasChangedField('profession')) {
             return;
         }

@@ -3,20 +3,21 @@
 namespace App\Domain\Model;
 
 use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Put;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Patch;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use App\Domain\Model\Caracteristique;
 use ApiPlatform\Metadata\GetCollection;
 use App\Repository\PersonnageRepository;
+use App\State\PersonnageUpdaterProcessor;
 use App\Domain\Model\CompetencePersonnage;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
 use App\PersonnageCreator\Domain\Model\Profession;
+use Symfony\Component\Serializer\Annotation\Context;
 use Symfony\Component\Serializer\Annotation\Groups;
-use App\State\Personnage\PersonnagePatchStateProcessor;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
 #[ApiResource(
@@ -27,7 +28,7 @@ use App\State\Personnage\PersonnagePatchStateProcessor;
         new GetCollection(),
         new Post(),
         new Patch(
-            processor: PersonnagePatchStateProcessor::class
+            processor: PersonnageUpdaterProcessor::class
         ),
     ],
     paginationItemsPerPage: 10,
@@ -78,7 +79,11 @@ class Personnage
     #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class, cascade: ['persist', 'remove'])]
     private ?Collection $competence = null;
 
-    #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
+    /**
+     * @var Profession $profession
+     */
+    #[ApiProperty(readableLink: false, writableLink: false)]
+    #[Groups(['personnage:write', 'personnage:read'])]
     #[ORM\ManyToOne(targetEntity: Profession::class)]
     private ?Profession $profession = null;
 

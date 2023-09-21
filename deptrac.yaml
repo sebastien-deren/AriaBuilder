@@ -1,6 +1,6 @@
 parameters:
   paths:
-    - ./src
+    - ./src/PersonnageCreator
   exclude_files:
     - "#.*test.*#"
   layers:
@@ -11,7 +11,7 @@ parameters:
     - name: Application
       collectors:
         - type: directory
-          regex: .+/Repository/.*
+          regex: .+/Application/.*
     - name: Infrastructure
       collectors:
         - type: directory
@@ -38,6 +38,7 @@ parameters:
         - { type: className, regex: ^Symfony\\Component\\Uid\\ }
   ruleset:
     Domain:
+      - Domain
       - Collection
       - Attributes
       - Helpers

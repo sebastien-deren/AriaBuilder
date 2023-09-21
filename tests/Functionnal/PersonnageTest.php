@@ -2,18 +2,14 @@
 
 namespace App\Tests\Functionnal;
 
-use ApiPlatform\OpenApi\Model\Header;
-use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use ApiPlatform\Util\CachedTrait;
-use App\Domain\Model\Competence;
-use App\Domain\Model\CompetencePersonnage;
-use App\Domain\Model\Personnage;
+use Doctrine\ORM\EntityManager;
 use App\Factory\CompetenceFactory;
-use App\Factory\CompetencePersonnageFactory;
 use App\Factory\PersonnageFactory;
 use App\Factory\ProfessionFactory;
-use Doctrine\ORM\EntityManager;
 use Zenstruck\Foundry\Test\ResetDatabase;
+use App\Factory\CompetencePersonnageFactory;
+use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
+use Doctrine\Common\Collections\ArrayCollection;
 
 class PersonnageTest extends ApiTestCase
 {
@@ -62,7 +58,8 @@ class PersonnageTest extends ApiTestCase
         $competence = CompetenceFactory::createOne();
         $personnage = PersonnageFactory::createOne([]);
         $competencePersonnage = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competence]);
-        $profession = ProfessionFactory::createOne(['competenceProfessions' => array($competence)]);
+        $collection = new ArrayCollection([$competence->object()]);
+        $profession = ProfessionFactory::createOne(['competenceProfessions' => $collection]);
         $oldPercentage = $competencePersonnage->getPourcentage();
         $response = static::createClient()->request(
             'PATCH',

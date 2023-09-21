@@ -2,19 +2,17 @@
 
 declare(strict_types=1);
 
-namespace App\PersonnageCreator\Infrastucture\ApiPlatform\Resource;
+namespace App\PersonnageCreator\Infrastructure\ApiPlatform\Resource;
 
 use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use App\PersonnageCreator\Domain\Model\Profession;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
-use App\PersonnageCreator\Infrastucture\ApiPlatform\Traits\IriConverter;
-use App\PersonnageCreator\Infrastucture\ApiPlatform\State\Profession\Provider\ProfessionItemProvider;
-use App\PersonnageCreator\Infrastucture\ApiPlatform\State\Profession\Provider\ProfessionCollectionProvider;
+use App\PersonnageCreator\Infrastructure\ApiPlatform\State\Profession\Provider\ProfessionItemProvider;
+use App\PersonnageCreator\Infrastructure\ApiPlatform\State\Profession\Provider\ProfessionCollectionProvider;
 
 #[ApiResource(
     shortName: "professions",
@@ -38,9 +36,8 @@ use App\PersonnageCreator\Infrastucture\ApiPlatform\State\Profession\Provider\Pr
 )]
 final class ProfessionResource
 {
-    use IriConverter;
     public function __construct(
-        #[ApiProperty(identifier: true, readable: true, writable: true)]
+        #[ApiProperty(identifier: true, readable: true, writable: false)]
         public ?int $id,
 
         #[Assert\NotNull(groups: ['create'])]

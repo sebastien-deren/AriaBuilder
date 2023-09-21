@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\PersonnageCreator\Infrastucture\ApiPlatform\Traits;
+namespace App\PersonnageCreator\Infrastructure\ApiPlatform\Traits;
 
 use ApiPlatform\Api\IriConverterInterface;
 
