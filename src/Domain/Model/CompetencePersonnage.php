@@ -2,10 +2,43 @@
 
 namespace App\Domain\Model;
 
-use App\Repository\CompetencePersonnageRepository;
+use ApiPlatform\Metadata\Get;
+use ApiPlatform\Metadata\Link;
+use ApiPlatform\Metadata\Post;
+use ApiPlatform\Metadata\Patch;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\GetCollection;
+use App\DTO\Input\Competence\CalculusInput;
+use App\Repository\CompetencePersonnageRepository;
+use App\Domain\Personnages\Competences\Processors\CalculusProcessor;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetencePersonnageRepository::class)]
+#[ApiResource(
+    operations: [new Get()]
+)]
+#[ApiResource(
+    uriTemplate: 'personnages/{id_perso}/competences.{_format}',
+    uriVariables: [
+        'id_perso' => new Link(
+            fromProperty: 'competence',
+            fromClass: Personnage::class
+        )
+    ],
+    operations: [new GetCollection(), new Post(), new Patch()]
+
+)]
+#[ApiResource(
+    uriTemplate: 'personnage/{id_perso}/base_competence.{_format}',
+    uriVariables: [
+        'id_perso' => new Link(
+            fromProperty: 'competence',
+            fromClass: Personnage::class
+        )
+    ],
+    operations: [new Post(input: CalculusInput::class, processor: CalculusProcessor::class)],
+)]
 class CompetencePersonnage
 {
     #[ORM\Id]
@@ -13,6 +46,7 @@ class CompetencePersonnage
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups("personnage:read")]
     #[ORM\Column]
     private ?int $pourcentage = null;
 

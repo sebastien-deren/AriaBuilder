@@ -11,6 +11,7 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Controller\BaseCompetence;
 use App\Repository\CompetenceRepository;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetenceRepository::class)]
 #[ApiResource(
@@ -33,6 +34,7 @@ class Competence
     #[ORM\Column]
     private ?int $id = null;
 
+    #[Groups('personnage:read')]
     #[ORM\Column(length: 255)]
     private ?string $nom = null;
 
