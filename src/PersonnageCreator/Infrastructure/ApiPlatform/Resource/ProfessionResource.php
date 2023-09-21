@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\PersonnageCreator\Infrastructure\ApiPlatform\Resource;
 
+use ApiPlatform\Doctrine\Orm\State\Options;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\ApiProperty;
 use ApiPlatform\Metadata\ApiResource;

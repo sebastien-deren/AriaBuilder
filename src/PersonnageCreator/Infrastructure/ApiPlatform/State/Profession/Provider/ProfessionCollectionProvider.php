@@ -5,11 +5,12 @@ declare(strict_types=1);
 namespace App\PersonnageCreator\Infrastructure\ApiPlatform\State\Profession\Provider;
 
 use ApiPlatform\Metadata\Operation;
+use ApiPlatform\State\ProviderInterface;
 use ApiPlatform\State\Pagination\Pagination;
 use ApiPlatform\State\Pagination\TraversablePaginator;
-use ApiPlatform\State\ProviderInterface;
 use App\PersonnageCreator\Application\Query\FindProfessionsQuery;
 use App\PersonnageCreator\Application\Query\FindProfessionsQueryHandler;
+use App\PersonnageCreator\Infrastructure\ApiPlatform\Resource\ProfessionResource;
 
 class ProfessionCollectionProvider implements ProviderInterface
 {
@@ -26,7 +27,14 @@ class ProfessionCollectionProvider implements ProviderInterface
             $limit = $this->pagination->getLimit($operation, $context);
             $offset = $this->pagination->getPage($context);
         }
+
         $model = $this->findProfessions->ask(new FindProfessionsQuery($offset, $limit));
-        return (new TraversablePaginator($model, $offset, $limit, count($model)));
+
+        $resources = [];
+        foreach ($model as $item) {
+            $resources[] = ProfessionResource::fromModel($item);
+        }
+
+        return (new TraversablePaginator(new \ArrayIterator($resources), $offset, $limit, \count($resources)));
     }
 }

@@ -82,7 +82,6 @@ class Personnage
     /**
      * @var Profession $profession
      */
-    //#[ApiProperty(uriTemplate: '/brands/{brandId}/cars')]
     #[Groups(['personnage:write', 'personnage:read'])]
     #[ORM\ManyToOne(targetEntity: Profession::class)]
     private ?Profession $profession = null;
