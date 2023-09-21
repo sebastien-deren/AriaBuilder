@@ -8,6 +8,7 @@ use Doctrine\ORM\Tools\Pagination\Paginator;
 use App\PersonnageCreator\Domain\Model\Profession;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use App\PersonnageCreator\Domain\Repository\ProfessionRepositoryInterface;
+use Doctrine\Common\Collections\Criteria;
 
 /**
  * @extends ServiceEntityRepository<Profession>
@@ -40,9 +41,13 @@ class DoctrineProfessionRepository extends ServiceEntityRepository implements Pr
             ->setFirstResult($page)
             ->setMaxResults($limit);
 
-        $paginator = new Paginator($query);
 
-        $c = count($paginator);
+        $paginator = new Paginator($this->createQueryBuilder('prof')
+            ->addCriteria(
+                Criteria::create()
+                    ->setFirstResult($page - 1)
+                    ->setMaxResults($limit)
+            ));
 
         return $paginator;
     }

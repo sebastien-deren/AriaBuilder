@@ -2,6 +2,7 @@
 
 namespace App\PersonnageCreator\Domain\Model;
 
+use ApiPlatform\Metadata\ApiProperty;
 use App\Domain\Model\Competence;
 use Doctrine\ORM\Mapping as ORM;
 use App\Domain\Model\CompetenceProfession;
@@ -18,7 +19,7 @@ class Profession
     #[ORM\Column]
     private int $id;
     public function __construct(
-
+        #[ApiProperty(iris:[''])]
         #[ORM\Column(length: 255)]
         private string $nom,
 

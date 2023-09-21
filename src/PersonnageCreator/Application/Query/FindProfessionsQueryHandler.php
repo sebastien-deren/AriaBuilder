@@ -13,8 +13,6 @@ class FindProfessionsQueryHandler implements QueryHandlerInterface
     }
     public function ask(FindProfessionsQuery $query)
     {
-        return $this->professionRepository->getAll();
-
-        //return $this->professionRepository->getWithPagination($query->page, $query->limit);
+        return $this->professionRepository->getWithPagination($query->page, $query->limit);
     }
 }
