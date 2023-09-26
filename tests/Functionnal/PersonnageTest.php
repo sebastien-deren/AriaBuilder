@@ -2,10 +2,8 @@
 
 namespace App\Tests\Functionnal;
 
-use ApiPlatform\OpenApi\Model\Header;
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use ApiPlatform\Util\CachedTrait;
-use App\Domain\Model\Competence;
+use App\Domain\Model\Background;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
 use App\Factory\CompetenceFactory;
@@ -77,8 +75,10 @@ class PersonnageTest extends ApiTestCase
         //dd($response->getContent());
         $this->assertResponseIsSuccessful();
         $this->assertJsonContains(['profession' => '/api/professions/1']);
-        //$this->assertJsonContains(['pourcentage' => 20]);
+        $competencePersonnage = $this->entityManager->getRepository(CompetencePersonnage::class)->find($competencePersonnage->getId());
         $this->assertEquals($competencePersonnage->getPourcentage(), ($oldPercentage + 10));
-        $this->assertEquals($personnage->getProfession(), $profession);
+        $professionExpected = $this->entityManager->getRepository(Personnage::class)->find($personnage->getId())?->getProfession();
+        $this->assertNotNull($professionExpected);
+        $this->assertEquals($professionExpected->getNom(), $profession->getNom());
     }
 }

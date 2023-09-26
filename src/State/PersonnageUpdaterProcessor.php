@@ -28,7 +28,7 @@ final class PersonnageUpdaterProcessor implements ProcessorInterface
             $this->professionUpdater->updateCompetenceFromProfession($previousPersonnage, $data);
         }
 
-        $result = $this->persistProcessor->process($data, $operation, $uriVariables, $context);
+        $this->persistProcessor->process($data, $operation, $uriVariables, $context);
         return $data;
     }
 }

@@ -2,12 +2,27 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\ApiResource;
-use App\Repository\BackgroundRepository;
+use ApiPlatform\Metadata\Get;
 use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Post;
+use App\Repository\BackgroundRepository;
+use App\State\BackgroundPostProcessor;
+use ApiPlatform\OpenApi\Model;
 
 #[ORM\Entity(repositoryClass: BackgroundRepository::class)]
-#[ApiResource]
+#[ApiResource(
+    operations: [
+        new Get(),
+        new Post(
+            openapi: new Model\Operation(
+                summary: 'creer un background pour un personnage',
+                description: 'créer un background pour un personnage, les competences associées viendront modifier les pourcentages de competencePersonnage'
+            ),
+            processor: BackgroundPostProcessor::class,
+        ),
+    ]
+)]
 class Background
 {
     #[ORM\Id]
@@ -25,6 +40,9 @@ class Background
     #[ORM\ManyToOne()]
     #[ORM\JoinColumn(nullable: false)]
     private ?Competence $competenceMalus = null;
+
+    #[ORM\ManyToOne()]
+    private ?Personnage $personnage = null;
 
     public function getId(): ?int
     {
@@ -63,6 +81,26 @@ class Background
     public function setCompetenceMalus(Competence $competenceMalus): static
     {
         $this->competenceMalus = $competenceMalus;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of personnage
+     */
+    public function getPersonnage(): ?Personnage
+    {
+        return $this->personnage;
+    }
+
+    /**
+     * Set the value of personnage
+     *
+     * @return  self
+     */
+    public function setPersonnage(Personnage $personnage): static
+    {
+        $this->personnage = $personnage;
 
         return $this;
     }

@@ -2,21 +2,22 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Put;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Patch;
-use App\Domain\Model\Profession;
-use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
-use App\Domain\Model\Caracteristique;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use App\Domain\Model\Background;
+use App\Domain\Model\Caracteristique;
+use App\Domain\Model\CompetencePersonnage;
+use App\Domain\Model\Profession;
 use App\Repository\PersonnageRepository;
 use App\State\PersonnageUpdaterProcessor;
-use App\Domain\Model\CompetencePersonnage;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
 #[ApiResource(
@@ -79,7 +80,8 @@ class Personnage
     private ?Collection $competence = null;
 
     #[Groups(['personnage:read', 'personnage:write'])]
-    #[ORM\ManyToMany(targetEntity: Background::class)]
+    #[ORM\OneToMany(targetEntity: Background::class, mappedBy: 'personnage', cascade: ['persist', 'remove'])]
+    #[Assert\Count(max: 2)]
     private ?Collection $background = null;
 
     #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
