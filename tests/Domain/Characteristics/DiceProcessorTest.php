@@ -9,8 +9,8 @@ use ApiPlatform\Api\IriConverterInterface;
 use ApiPlatform\Metadata\GraphQl\Operation;
 use PHPUnit\Framework\MockObject\MockObject;
 use App\DTO\Inputs\Characteristics\DiceInput;
-use App\Domain\Personnages\Characteristiques\CharacLimitEnum;
-use App\Domain\Personnages\Characteristiques\Processors\CharacDiceProcessor;
+use App\Domain\Logic\Characteristiques\CharacLimitEnum;
+use App\Domain\Logic\Characteristiques\Processors\CharacDiceProcessor;
 
 class DiceProcessorTest extends TestCase
 {

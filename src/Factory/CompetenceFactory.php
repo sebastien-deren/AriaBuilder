@@ -3,7 +3,7 @@
 namespace App\Factory;
 
 use App\Domain\Model\Competence;
-use App\Domain\Personnages\Characteristiques\CharacEnum;
+use App\Domain\Logic\Characteristiques\CharacEnum;
 use App\Repository\CompetenceRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;

@@ -8,7 +8,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Post;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
-use App\Domain\Personnages\CompetencePersonnage\UpgradeCompetenceEnum;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Repository\TalentRepository;
 use App\State\TalentPostProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -45,7 +45,6 @@ class Talent
     #[ORM\OneToOne(targetEntity: Personnage::class)]
     private Personnage $personnage;
 
-    #[Assert\Count(max: 3, min: 0)]
     #[Groups(['talent:write'])]
     #[ORM\ManyToMany(targetEntity: CompetencePersonnage::class)]
     private Collection $upgradedCompetence;

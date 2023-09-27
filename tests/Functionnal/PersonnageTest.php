@@ -6,7 +6,7 @@ use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Domain\Model\Background;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
-use App\Domain\Talent\Talent;
+use App\Domain\Logic\Talent\Talent;
 use App\Factory\CaracteristiqueFactory;
 use App\Factory\CompetenceFactory;
 use App\Factory\CompetencePersonnageFactory;

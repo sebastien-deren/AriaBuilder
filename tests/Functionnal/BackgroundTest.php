@@ -3,7 +3,7 @@
 namespace App\Tests\Functionnal;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use App\Domain\Background\BackgroundEnum;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Model\Background;
 use App\Domain\Model\CompetencePersonnage;
 use App\Factory\CompetenceFactory;
@@ -55,7 +55,7 @@ class BackgroundTest extends ApiTestCase
         $this->assertStringContainsString('"description":"' . $background->getDescription() . '"', $response->getContent());
         $bonusComp = $this->comPersoRepository?->find($competencePersonnage['bonus']->getId());
         $malusComp = $this->comPersoRepository?->find($competencePersonnage['malus']->getId());
-        $this->assertEquals($oldBonusPercentage + BackgroundEnum::Bonus->value, $bonusComp->getPourcentage());
-        $this->assertEquals($oldMalusPercentage + BackgroundEnum::Malus->value, $malusComp->getPourcentage());
+        $this->assertEquals($oldBonusPercentage + UpgradeCompetenceEnum::Bonus->value, $bonusComp->getPourcentage());
+        $this->assertEquals($oldMalusPercentage + UpgradeCompetenceEnum::Malus->value, $malusComp->getPourcentage());
     }
 }
