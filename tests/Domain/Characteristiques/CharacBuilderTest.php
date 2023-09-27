@@ -13,6 +13,9 @@ use App\Domain\Model\Personnage;
 use App\DTO\CharacteristicsInput as Characteristics;
 use PHPUnit\Framework\TestCase;
 
+/**we need to rework CharacBuilder
+ * Even if we don't make a perfect hexagonal architecture this is horific!
+ */
 class CharacBuilderTest extends TestCase
 {
     private CharacPointProcessor $builder;
@@ -21,7 +24,8 @@ class CharacBuilderTest extends TestCase
     {
         $IriConverter = $this->getMockBuilder(IriConverterInterface::class)->onlyMethods(['getResourceFromIri', 'getIriFromResource'])->getMock();
         $IriConverter->expects($this->never())->method('getResourceFromIri')->willReturn(new Personnage());
-        $this->builder = new CharacPointProcessor($IriConverter,);
+        //
+        //$this->builder = new CharacPointProcessor($IriConverter,);
     }
 
     /**

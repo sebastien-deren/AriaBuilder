@@ -29,7 +29,7 @@ class TalentCreationTest extends TestCase
         $talent = (new Talent())->setBonus($Value)->setNumberOfTalent($numberOfTalent)->setPersonnage($personnage);
         for ($i = 0; $i < 5; $i++) {
             $stubComp = $this->createStub(CompetencePersonnage::class);
-            $stubComp->method('getPersonage')->willReturn($personnage);
+            $stubComp->method('getpersonnage')->willReturn($personnage);
             $talent->addUpgradedCompetence($stubComp);
         }
 
@@ -60,7 +60,7 @@ class TalentCreationTest extends TestCase
         $talent = (new Talent())->setBonus(UpgradeCompetenceEnum::Bonus)->setNumberOfTalent(3)->setPersonnage($personnage);
         for ($i = 0; $i < 5; $i++) {
             $stubComp = $this->createStub(CompetencePersonnage::class);
-            $stubComp->method('getPersonage')->willReturn($anotherPersonnage);
+            $stubComp->method('getpersonnage')->willReturn($anotherPersonnage);
             $talent->addUpgradedCompetence($stubComp);
         }
         $this->expectException(\Exception::class);

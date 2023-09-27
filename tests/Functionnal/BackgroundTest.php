@@ -35,9 +35,9 @@ class BackgroundTest extends ApiTestCase
         $competenceBonus = CompetenceFactory::createOne();
         $personnage = PersonnageFactory::createOne([]);
         $competencePersonnage = [];
-        $competencePersonnage['bonus'] = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competenceBonus]);
+        $competencePersonnage['bonus'] = CompetencePersonnageFactory::createOne(['personnage' => $personnage, 'competence' => $competenceBonus]);
         $oldBonusPercentage = $competencePersonnage['bonus']->getPourcentage();
-        $competencePersonnage['malus'] = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competenceMalus]);
+        $competencePersonnage['malus'] = CompetencePersonnageFactory::createOne(['personnage' => $personnage, 'competence' => $competenceMalus]);
         $oldMalusPercentage = $competencePersonnage['malus']->getPourcentage();
         $description = $faker->paragraph();
         $response = $this->createClient()->request('POST', 'api/backgrounds', [
