@@ -4,17 +4,18 @@ declare(strict_types=1);
 
 namespace App\EntityListener;
 
-use Doctrine\ORM\Events;
+use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
 use App\Domain\Model\Profession;
-use Doctrine\ORM\EntityManagerInterface;
-use App\Domain\Model\CompetencePersonnage;
-use Doctrine\ORM\Event\PreUpdateEventArgs;
-use Doctrine\Common\Collections\Collection;
 use App\Domain\Personnages\ChangeCompetencePourcentage;
+use App\Domain\Personnages\Profession\UpgradProfessionEnum;
 use App\Repository\CompetencePersonnageRepository;
 use App\Repository\PersonnageRepository;
 use Doctrine\Bundle\DoctrineBundle\Attribute\AsEntityListener;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\EntityManagerInterface;
+use Doctrine\ORM\Event\PreUpdateEventArgs;
+use Doctrine\ORM\Events;
 use Doctrine\ORM\UnitOfWork;
 use Doctrine\Persistence\ObjectManager;
 
@@ -27,7 +28,6 @@ class PersonnageProfessionUpdater
 
     public function preUpdate(Personnage $personnage, PreUpdateEventArgs $preUpdateEventArgs)
     {
-        dump('PERSONNAGE UPDATE');
         if (!$preUpdateEventArgs->hasChangedField('profession')) {
             return;
         }

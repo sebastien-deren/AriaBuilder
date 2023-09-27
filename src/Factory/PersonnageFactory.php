@@ -71,18 +71,10 @@ final class PersonnageFactory extends ModelFactory
         return Personnage::class;
     }
 
-    public function characterized(): self
+    public function characterized(Proxy $carac): self
     {
         return $this->addState([
-            "caracteristique" => CaracteristiqueFactory::new()
+            "caracteristique" => $carac
         ]);
-    }
-    public function skilled(): self
-    {
-        return $this->characterized()->addState(
-            ["competence" => CompetencePersonnageFactory::findOrCreate(
-                ["competence" => CompetenceFactory::findOrCreate(["nom" => 'nom'])]
-            )]
-        );
     }
 }

@@ -9,5 +9,6 @@ class ProfessionTest extends ApiTestCase
     public function testSomething(): void
     {
         $this->assertNull(null);
+        $this->assertTrue(true);
     }
 }
