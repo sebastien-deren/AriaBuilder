@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace App\Domain\Personnages\CompetencePersonnage;
+namespace App\Domain\Logic\CompetencePersonnage;
 
 enum UpgradeCompetenceEnum: int
 {

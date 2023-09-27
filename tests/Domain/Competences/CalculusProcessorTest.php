@@ -45,8 +45,7 @@ class CalculusProcessorTest extends TestCase
         $calculusInput = $this->createCalculusInput();
         $baseCompetence = CompetenceFactory::new()->based()->createMany(4);
         $carac = CaracteristiqueFactory::createOne();
-        $personnage = PersonnageFactory::new()->characterized()->createOne();
-        $personnage->setCaracteristique($carac->object());
+        $personnage = PersonnageFactory::new()->characterized($carac)->createOne();
         $this->personnageRepository->expects($this->once())->method('find')->willReturn($personnage->object());
         $this->competenceRepository->expects($this->once())->method('findby')->willReturn(array_map(fn ($item) => $item->object(), $baseCompetence));
         $this->entityManager->expects($this->exactly(count($baseCompetence)))->method('persist');
