@@ -8,16 +8,16 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Domain\Model\Background;
-use App\Domain\Model\Caracteristique;
-use App\Domain\Model\CompetencePersonnage;
-use App\Domain\Model\Profession;
+use App\Domain\Talent\Talent;
+use App\Domain\Talent\TalentArrayCreator;
 use App\Repository\PersonnageRepository;
 use App\State\PersonnageUpdaterProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
-use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Component\Validator\Constraint as Assert;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
 #[ApiResource(
@@ -87,6 +87,7 @@ class Personnage
     #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
     #[ORM\ManyToOne(targetEntity: Profession::class)]
     private ?Profession $profession = null;
+
 
     public function __construct()
     {
@@ -240,5 +241,9 @@ class Personnage
         $this->profession = $profession;
 
         return $this;
+    }
+    public function getTalentProficiency(): array
+    {
+        return (new TalentArrayCreator())->createArray($this->caracteristique->getCharisme(), $this->caracteristique->getIntelligence());
     }
 }

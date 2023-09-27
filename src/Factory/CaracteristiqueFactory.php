@@ -53,7 +53,6 @@ final class CaracteristiqueFactory extends ModelFactory
             'endurance' => self::faker()->randomNumber(),
             'force' => self::faker()->randomNumber(),
             'intelligence' => self::faker()->randomNumber(),
-            'personnage' => PersonnageFactory::new(),
         ];
     }
 
