@@ -11,7 +11,6 @@ use App\Factory\CompetencePersonnageFactory;
 use App\Factory\PersonnageFactory;
 use App\Repository\BackgroundRepository;
 use App\Repository\CompetencePersonnageRepository;
-use App\Tests\Factory\BackgroundFactory;
 use Doctrine\ORM\EntityManager;
 use Faker\Factory;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -43,8 +42,8 @@ class BackgroundTest extends ApiTestCase
         $description = $faker->paragraph();
         $response = $this->createClient()->request('POST', 'api/backgrounds', [
             'json' => [
-                'competenceBonus' => 'api/competences/' . $competenceBonus->getId(),
-                'competenceMalus' => 'api/competences/' . $competenceMalus->getId(),
+                'competenceBonus' => 'api/competence_personnages/' . $competencePersonnage['bonus']->getId(),
+                'competenceMalus' => 'api/competence_personnages/' . $competencePersonnage['malus']->getId(),
                 'description' => $description,
                 'personnage' => 'api/personnages/' . $personnage->getId(),
             ]
