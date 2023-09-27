@@ -2,21 +2,22 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Put;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Patch;
-use App\Domain\Model\Profession;
-use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
-use App\Domain\Model\Caracteristique;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use App\Domain\Model\Background;
+use App\Domain\Model\Caracteristique;
+use App\Domain\Model\CompetencePersonnage;
+use App\Domain\Model\Profession;
 use App\Repository\PersonnageRepository;
 use App\State\PersonnageUpdaterProcessor;
-use App\Domain\Model\CompetencePersonnage;
-use Doctrine\Common\Collections\Collection;
 use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: PersonnageRepository::class)]
 #[ApiResource(
@@ -74,9 +75,14 @@ class Personnage
     #[ORM\OneToOne(inversedBy: 'personnage', cascade: ['persist', 'remove'], orphanRemoval: true)]
     private ?Caracteristique $caracteristique = null;
 
-    #[Groups(['personnage:read'])]
+    #[Groups(['personnage:competence'])]
     #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class, cascade: ['persist', 'remove'])]
     private ?Collection $competence = null;
+
+    #[Groups(['personnage:read', 'personnage:write'])]
+    #[ORM\OneToMany(targetEntity: Background::class, mappedBy: 'personnage', cascade: ['persist', 'remove'])]
+    #[Assert\Count(max: 2)]
+    private ?Collection $background = null;
 
     #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
     #[ORM\ManyToOne(targetEntity: Profession::class)]
@@ -85,6 +91,7 @@ class Personnage
     public function __construct()
     {
         $this->competence = new ArrayCollection();
+        $this->background = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -202,6 +209,25 @@ class Personnage
         }
 
         return $this;
+    }
+    public function addBackground(Background $background): static
+    {
+        if (!$this->background->contains($background)) {
+            $this->background->add($background);
+        }
+        return $this;
+    }
+
+
+    public function removeBackground($background): static
+    {
+        $this->background->removeElement($background);
+        return $this;
+    }
+
+    public function getBackground(): Collection
+    {
+        return $this->background;
     }
 
     public function getProfession(): ?Profession

@@ -59,8 +59,6 @@ final class ProfessionCompetenceUpdater implements ProfessionCompetenceUpdaterIn
             ->map(
                 function ($competence) use ($enum) {
                     $competence->setPourcentage($competence->getPourcentage() + $enum->value);
-
-                    dump($competence);
                 }
             );
 

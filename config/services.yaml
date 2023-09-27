@@ -18,6 +18,7 @@ services:
     exclude:
       - "../src/DependencyInjection/"
       - "../src/Entity/"
+      - "../src/Domain/Model/"
       - "../src/Kernel.php"
   App\DataFixtures\CompetenceFixtures:
     arguments:
