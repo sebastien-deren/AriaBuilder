@@ -4,6 +4,9 @@ declare(strict_types=1);
 
 namespace App\Domain\Logic\Profession;
 
+use App\Domain\Logic\CompetencePersonnage\CompetencePersonnageUpdater;
+use App\Domain\Logic\CompetencePersonnage\CompetencePersonnageUpdaterInterface;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Model\Personnage;
 use App\Domain\Model\Profession;
 //NOT HEXAGONAL
@@ -12,10 +15,13 @@ use App\Domain\Logic\Profession\UpgradProfessionEnum;
 
 final class ProfessionCompetenceUpdater implements ProfessionCompetenceUpdaterInterface
 {
+    public function __construct(private CompetencePersonnageUpdaterInterface $competencePersonnageUpdater)
+    {
+    }
     public function updateCompetenceFromProfession(array $previousPersonnage, Personnage $currentPersonnage): void
     {
         if (empty($previousPersonnage['profession'])) {
-            $this->updateCompetences($currentPersonnage->getProfession(), $currentPersonnage->getCompetence(), UpgradProfessionEnum::Upgrade);
+            $this->updateCompetences($currentPersonnage->getProfession(), $currentPersonnage->getCompetence(), UpgradeCompetenceEnum::Bonus);
             return;
         }
         if ($previousPersonnage['profession'] === $currentPersonnage->getProfession()) {
@@ -24,26 +30,19 @@ final class ProfessionCompetenceUpdater implements ProfessionCompetenceUpdaterIn
         $this->updateCompetences(
             $previousPersonnage['profession'],
             $currentPersonnage->getCompetence(),
-            UpgradProfessionEnum::Downgrade,
+            UpgradeCompetenceEnum::Malus,
         );
         $this->updateCompetences(
             $previousPersonnage['profession'],
             $currentPersonnage->getCompetence(),
-            UpgradProfessionEnum::Upgrade,
+            UpgradeCompetenceEnum::Bonus,
         );
         return;
     }
-    /**
-     * @param ?Profession $profession
-     * @param UpgradProfessionEnum $enum
-     */
-    /*I don't understand why $currentPersonnage->getCompetence() give me an error
-        It seems to me that i decorate well enough my collection so that ->getCompetence() should give me CollectionCompetencePersonnage
-        */
     private function updateCompetences(
         ?Profession $profession,
         Collection $competencesPersonnage,
-        UpgradProfessionEnum $enum
+        UpgradeCompetenceEnum $enum
     ): void {
         if (null === $profession) {
             return;
@@ -51,17 +50,12 @@ final class ProfessionCompetenceUpdater implements ProfessionCompetenceUpdaterIn
         $competencesProfession = $profession->getCompetenceProfessions();
 
 
-        $competencesPersonnage
+        $competenceToUpdate = $competencesPersonnage
             ->filter(
                 fn ($competence) =>
                 $competencesProfession->contains($competence->getCompetence())
-            )
-            ->map(
-                function ($competence) use ($enum) {
-                    $competence->setPourcentage($competence->getPourcentage() + $enum->value);
-                }
             );
-
+        $this->competencePersonnageUpdater->updateCompetenceCollection($competenceToUpdate, $enum);
         return;
     }
 }

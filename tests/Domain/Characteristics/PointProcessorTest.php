@@ -7,8 +7,8 @@ use App\Domain\Model\Personnage;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\Api\IriConverterInterface;
 use ApiPlatform\Metadata\GraphQl\Operation;
-use App\Domain\Personnages\Characteristiques\CharacLimitEnum;
-use App\Domain\Personnages\Characteristiques\Processors\CharacPointProcessor;
+use App\Domain\Logic\Characteristiques\CharacLimitEnum;
+use App\Domain\Logic\Characteristiques\Processors\CharacPointProcessor;
 use App\DTO\Inputs\Characteristics\PointInput;
 use PHPUnit\Framework\MockObject\MockObject;
 

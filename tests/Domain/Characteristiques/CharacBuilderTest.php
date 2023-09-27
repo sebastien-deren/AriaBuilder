@@ -8,9 +8,9 @@ use PHPUnit\Framework\TestCase;
 use App\Domain\Model\Personnage;
 use ApiPlatform\Api\IriConverterInterface;
 use App\DTO\CharacteristicsInput as Characteristics;
-use App\Domain\Personnages\Characteristiques\CharacRules;
-use App\Domain\Personnages\Characteristiques\CharacBuilder;
-use App\Domain\Personnages\Characteristiques\CharacLimitEnum;
+use App\Domain\Logic\Characteristiques\CharacRules;
+use App\Domain\Logic\Characteristiques\CharacBuilder;
+use App\Domain\Logic\Characteristiques\CharacLimitEnum;
 
 class CharacBuilderTest extends TestCase
 {

@@ -1,14 +1,14 @@
 <?php
 
-namespace App\Tests\Domain\Talent;
+namespace App\Tests\Domain\Logic\Talent;
 
 use App\Domain\Model\Caracteristique;
 use App\Domain\Model\Competence;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
 use App\Domain\Model\Talent;
-use App\Domain\Personnages\CompetencePersonnage\UpgradeCompetenceEnum;
-use App\Domain\Talent\TalentCreation;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
+use App\Domain\Logic\Talent\TalentCreation;
 use Exception;
 use PHPUnit\Framework\TestCase;
 
@@ -68,5 +68,4 @@ class TalentCreationTest extends TestCase
 
         $result = (new TalentCreation())->create($talent);
     }
-
 }

@@ -8,9 +8,9 @@ use ApiPlatform\Doctrine\Common\State\PersistProcessor;
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
 use App\Domain\Model\Talent;
-use App\Domain\Personnages\CompetencePersonnage\UpgradeCompetenceEnum;
-use App\Domain\Talent\TalentCompetenceUpdaterInterface;
-use App\Domain\Talent\TalentCreationInterface;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
+use App\Domain\Logic\Talent\TalentCompetenceUpdaterInterface;
+use App\Domain\Logic\Talent\TalentCreationInterface;
 
 
 class TalentPostProcessor implements ProcessorInterface

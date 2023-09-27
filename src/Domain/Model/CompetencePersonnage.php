@@ -11,7 +11,7 @@ use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\GetCollection;
 use App\DTO\Input\Competence\CalculusInput;
 use App\Repository\CompetencePersonnageRepository;
-use App\Domain\Personnages\Competences\Processors\CalculusProcessor;
+use App\Domain\Logic\Competences\Processors\CalculusProcessor;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetencePersonnageRepository::class)]

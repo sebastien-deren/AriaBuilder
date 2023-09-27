@@ -2,13 +2,14 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\Get;
-use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
+use ApiPlatform\OpenApi\Model;
+use App\Domain\Model\CompetencePersonnage;
 use App\Repository\BackgroundRepository;
 use App\State\BackgroundPostProcessor;
-use ApiPlatform\OpenApi\Model;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BackgroundRepository::class)]
 #[ApiResource(
@@ -35,11 +36,11 @@ class Background
 
     #[ORM\ManyToOne()]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Competence $competenceBonus = null;
+    private ?CompetencePersonnage $competenceBonus = null;
 
     #[ORM\ManyToOne()]
     #[ORM\JoinColumn(nullable: false)]
-    private ?Competence $competenceMalus = null;
+    private ?CompetencePersonnage $competenceMalus = null;
 
     #[ORM\ManyToOne()]
     private ?Personnage $personnage = null;
@@ -61,24 +62,24 @@ class Background
         return $this;
     }
 
-    public function getCompetenceBonus(): ?Competence
+    public function getCompetenceBonus(): ?CompetencePersonnage
     {
         return $this->competenceBonus;
     }
 
-    public function setCompetenceBonus(Competence $competenceBonus): static
+    public function setCompetenceBonus(CompetencePersonnage $competenceBonus): static
     {
         $this->competenceBonus = $competenceBonus;
 
         return $this;
     }
 
-    public function getCompetenceMalus(): ?Competence
+    public function getCompetenceMalus(): ?CompetencePersonnage
     {
         return $this->competenceMalus;
     }
 
-    public function setCompetenceMalus(Competence $competenceMalus): static
+    public function setCompetenceMalus(CompetencePersonnage $competenceMalus): static
     {
         $this->competenceMalus = $competenceMalus;
 

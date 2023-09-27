@@ -10,13 +10,13 @@ use App\Domain\Model\Background;
 
 class BackgroundCompetenceUpdater implements BackgroundCompetenceUpdaterInterface
 {
-    public function __construct(private CompetencePersonnageUpdaterInterface $competencePersonnageUpdater)
+    public function __construct(private CompetencePersonnageUpdaterInterface $comPersoUpdater)
     {
     }
     public function updateCompetenceFromBackground(Background $background): Background
     {
-        $this->comPersoUpdater->updateCompetencePercentage($background->getCompetenceBonus(), $background->getPersonnage(), UpgradeCompetenceEnum::Bonus);
-        $this->comPersoUpdater->updateCompetencePercentage($background->getCompetenceMalus(), $background->getPersonnage(), UpgradeCompetenceEnum::Malus);
+        $this->comPersoUpdater->updateCompetence($background->getCompetenceBonus(), UpgradeCompetenceEnum::Bonus);
+        $this->comPersoUpdater->updateCompetence($background->getCompetenceMalus(), UpgradeCompetenceEnum::Malus);
 
         return $background;
     }

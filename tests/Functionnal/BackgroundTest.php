@@ -3,7 +3,7 @@
 namespace App\Tests\Functionnal;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use App\Domain\Background\BackgroundEnum;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Model\Background;
 use App\Domain\Model\CompetencePersonnage;
 use App\Factory\CompetenceFactory;
@@ -11,7 +11,6 @@ use App\Factory\CompetencePersonnageFactory;
 use App\Factory\PersonnageFactory;
 use App\Repository\BackgroundRepository;
 use App\Repository\CompetencePersonnageRepository;
-use App\Tests\Factory\BackgroundFactory;
 use Doctrine\ORM\EntityManager;
 use Faker\Factory;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -43,8 +42,8 @@ class BackgroundTest extends ApiTestCase
         $description = $faker->paragraph();
         $response = $this->createClient()->request('POST', 'api/backgrounds', [
             'json' => [
-                'competenceBonus' => 'api/competences/' . $competenceBonus->getId(),
-                'competenceMalus' => 'api/competences/' . $competenceMalus->getId(),
+                'competenceBonus' => 'api/competence_personnages/' . $competencePersonnage['bonus']->getId(),
+                'competenceMalus' => 'api/competence_personnages/' . $competencePersonnage['malus']->getId(),
                 'description' => $description,
                 'personnage' => 'api/personnages/' . $personnage->getId(),
             ]
@@ -55,7 +54,7 @@ class BackgroundTest extends ApiTestCase
         $this->assertStringContainsString('"description":"' . $background->getDescription() . '"', $response->getContent());
         $bonusComp = $this->comPersoRepository?->find($competencePersonnage['bonus']->getId());
         $malusComp = $this->comPersoRepository?->find($competencePersonnage['malus']->getId());
-        $this->assertEquals($oldBonusPercentage + BackgroundEnum::Bonus->value, $bonusComp->getPourcentage());
-        $this->assertEquals($oldMalusPercentage + BackgroundEnum::Malus->value, $malusComp->getPourcentage());
+        $this->assertEquals($oldBonusPercentage + UpgradeCompetenceEnum::Bonus->value, $bonusComp->getPourcentage());
+        $this->assertEquals($oldMalusPercentage + UpgradeCompetenceEnum::Malus->value, $malusComp->getPourcentage());
     }
 }

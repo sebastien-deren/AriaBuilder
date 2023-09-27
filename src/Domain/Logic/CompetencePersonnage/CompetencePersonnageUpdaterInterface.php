@@ -4,10 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domain\Logic\CompetencePersonnage;
 
-use App\Domain\Model\Competence;
-use App\Domain\Model\Personnage;
+use App\Domain\Model\CompetencePersonnage;
+use Doctrine\Common\Collections\Collection;
 
 interface CompetencePersonnageUpdaterInterface
 {
-    public function updateCompetencePercentage(Competence $competence, Personnage $personnage, UpgradeCompetenceEnum $backedEnum): void;
+    public function updateCompetence(CompetencePersonnage $competencePersonnage, UpgradeCompetenceEnum $enum): CompetencePersonnage;
+    public function updateCompetenceCollection(Collection $competences, UpgradeCompetenceEnum $enum): Collection;
 }

@@ -8,7 +8,7 @@ use ApiPlatform\Metadata\Operation;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\State\ProcessorInterface;
 use ApiPlatform\Doctrine\Common\State\PersistProcessor;
-use App\Domain\Personnages\Profession\ProfessionCompetenceUpdaterInterface;
+use App\Domain\Logic\Profession\ProfessionCompetenceUpdaterInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
 final class PersonnageUpdaterProcessor implements ProcessorInterface

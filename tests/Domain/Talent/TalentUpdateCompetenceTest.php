@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace App\Tests\Domain\Talent;
+namespace App\Tests\Domain\Logic\Talent;
 
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Talent;
-use App\Domain\Personnages\CompetencePersonnage\UpgradeCompetenceEnum;
-use App\Domain\Talent\TalentCompetenceUpdater;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
+use App\Domain\Logic\Talent\TalentCompetenceUpdater;
 use PHPUnit\Framework\TestCase;
 
 class TalentUpdateCompetenceTest extends TestCase
