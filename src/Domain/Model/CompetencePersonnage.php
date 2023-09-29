@@ -2,21 +2,24 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Link;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Patch;
-use Doctrine\ORM\Mapping as ORM;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
-use App\DTO\Input\Competence\CalculusInput;
+use ApiPlatform\Metadata\Link;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use App\Infrastructure\ApiPlatform\Inputs\CompetencePersonnageInput;
+use App\Infrastructure\ApiPlatform\State\PostProcessorBaseCompetence;
 use App\Repository\CompetencePersonnageRepository;
-use App\Domain\Logic\Competences\Processors\CalculusProcessor;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetencePersonnageRepository::class)]
 #[ApiResource(
-    operations: [new Get()]
+    operations: [
+        new Get(),
+        new Post(uriTemplate: 'base_competence/auto.{_format}', input: CompetencePersonnageInput::class, processor: PostProcessorBaseCompetence::class)
+    ]
 )]
 #[ApiResource(
     uriTemplate: 'personnages/{id_perso}/competences.{_format}',
@@ -28,16 +31,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
     ],
     operations: [new GetCollection(), new Post(), new Patch()]
 
-)]
-#[ApiResource(
-    uriTemplate: 'personnage/{id_perso}/base_competence.{_format}',
-    uriVariables: [
-        'id_perso' => new Link(
-            fromProperty: 'competence',
-            fromClass: Personnage::class
-        )
-    ],
-    operations: [new Post(input: CalculusInput::class, processor: CalculusProcessor::class)],
 )]
 class CompetencePersonnage
 {

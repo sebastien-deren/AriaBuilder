@@ -48,11 +48,11 @@ final class CaracteristiqueFactory extends ModelFactory
     {
         return [
             'caracPoint' => self::faker()->randomNumber(),
-            'charisme' => self::faker()->randomNumber(),
-            'dexterite' => self::faker()->randomNumber(),
-            'endurance' => self::faker()->randomNumber(),
-            'force' => self::faker()->randomNumber(),
-            'intelligence' => self::faker()->randomNumber(),
+            'charisme' => self::faker()->randomNumber(2),
+            'dexterite' => self::faker()->randomNumber(2),
+            'endurance' => self::faker()->randomNumber(2),
+            'force' => self::faker()->randomNumber(2),
+            'intelligence' => self::faker()->randomNumber(2),
         ];
     }
 

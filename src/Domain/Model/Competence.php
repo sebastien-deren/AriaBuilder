@@ -10,6 +10,7 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Controller\BaseCompetence;
+use App\Domain\Logic\Competences\SubCompetenceEnum;
 use App\Repository\CompetenceRepository;
 use Symfony\Component\Serializer\Annotation\Groups;
 
@@ -79,26 +80,26 @@ class Competence
         return $this;
     }
 
-    public function getFirstCharac(): ?string
+    public function getFirstCharac(): SubCompetenceEnum
     {
-        return $this->firstCharac;
+        return $this->isBaseCompetence ? SubCompetenceEnum::from($this->firstCharac) : null;
     }
 
-    public function setFirstCharac(string $firstCharac): static
+    public function setFirstCharac(SubCompetenceEnum $firstCharac): static
     {
-        $this->firstCharac = $firstCharac;
+        $this->firstCharac = $firstCharac->value;
 
         return $this;
     }
 
-    public function getSecondCharac(): ?string
+    public function getSecondCharac(): SubCompetenceEnum
     {
-        return $this->secondCharac;
+        return $this->isBaseCompetence ? SubCompetenceEnum::from($this->secondCharac) : null;
     }
 
-    public function setSecondCharac(string $secondCharac): static
+    public function setSecondCharac(SubCompetenceEnum $secondCharac): static
     {
-        $this->secondCharac = $secondCharac;
+        $this->secondCharac = $secondCharac->value;
 
         return $this;
     }

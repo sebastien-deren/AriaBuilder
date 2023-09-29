@@ -2,7 +2,6 @@
 
 namespace App\Factory;
 
-use App\Domain\Model\Competence;
 use App\Domain\Model\Personnage;
 use App\Repository\PersonnageRepository;
 use Zenstruck\Foundry\ModelFactory;
