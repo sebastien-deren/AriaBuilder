@@ -8,8 +8,8 @@ use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Domain\Model\Background;
-use App\Domain\Talent\Talent;
-use App\Domain\Talent\TalentArrayCreator;
+use App\Domain\Logic\Talent\Talent;
+use App\Domain\Logic\Talent\TalentArrayCreator;
 use App\Repository\PersonnageRepository;
 use App\State\PersonnageUpdaterProcessor;
 use Doctrine\Common\Collections\ArrayCollection;
@@ -81,7 +81,6 @@ class Personnage
 
     #[Groups(['personnage:read', 'personnage:write'])]
     #[ORM\OneToMany(targetEntity: Background::class, mappedBy: 'personnage', cascade: ['persist', 'remove'])]
-    #[Assert\Count(max: 2)]
     private ?Collection $background = null;
 
     #[Groups(['personnage:profession', 'personnage:read', 'personnage:write'])]
@@ -241,9 +240,5 @@ class Personnage
         $this->profession = $profession;
 
         return $this;
-    }
-    public function getTalentProficiency(): array
-    {
-        return (new TalentArrayCreator())->createArray($this->caracteristique->getCharisme(), $this->caracteristique->getIntelligence());
     }
 }

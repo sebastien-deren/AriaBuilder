@@ -12,8 +12,8 @@ use ApiPlatform\Metadata\GetCollection;
 use App\DTO\Inputs\Characteristics\DiceInput;
 use App\Repository\CaracteristiqueRepository;
 use App\DTO\Inputs\Characteristics\PointInput;
-use App\Domain\Personnages\Characteristiques\Processors\CharacDiceProcessor;
-use App\Domain\Personnages\Characteristiques\Processors\CharacPointProcessor;
+use App\Domain\Logic\Characteristiques\Processors\CharacDiceProcessor;
+use App\Domain\Logic\Characteristiques\Processors\CharacPointProcessor;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
 

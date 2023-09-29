@@ -4,23 +4,24 @@ declare(strict_types=1);
 
 namespace App\Tests\Domain\Model\Personnage\Characteristiques;
 
-use PHPUnit\Framework\TestCase;
-use App\Domain\Model\Personnage;
 use ApiPlatform\Api\IriConverterInterface;
+use App\Domain\Logic\Characteristiques\CharacBuilder;
+use App\Domain\Logic\Characteristiques\CharacLimitEnum;
+use App\Domain\Logic\Characteristiques\CharacRules;
+use App\Domain\Logic\Characteristiques\Processors\CharacPointProcessor;
+use App\Domain\Model\Personnage;
 use App\DTO\CharacteristicsInput as Characteristics;
-use App\Domain\Personnages\Characteristiques\CharacRules;
-use App\Domain\Personnages\Characteristiques\CharacBuilder;
-use App\Domain\Personnages\Characteristiques\CharacLimitEnum;
+use PHPUnit\Framework\TestCase;
 
 class CharacBuilderTest extends TestCase
 {
-    private CharacBuilder $builder;
+    private CharacPointProcessor $builder;
 
     public function setUp(): void
     {
         $IriConverter = $this->getMockBuilder(IriConverterInterface::class)->onlyMethods(['getResourceFromIri', 'getIriFromResource'])->getMock();
         $IriConverter->expects($this->never())->method('getResourceFromIri')->willReturn(new Personnage());
-        $this->builder = new CharacBuilder($IriConverter);
+        $this->builder = new CharacPointProcessor($IriConverter,);
     }
 
     /**

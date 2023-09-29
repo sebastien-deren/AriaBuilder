@@ -10,7 +10,7 @@ use App\Repository\CompetenceRepository;
 use App\Repository\PersonnageRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
-use App\Domain\Personnages\Competences\Processors\CalculusProcessor;
+use App\Domain\Logic\Competences\Processors\CalculusProcessor;
 use App\DTO\Input\Competence\CalculusInput;
 use App\Factory\CaracteristiqueFactory;
 use App\Factory\CompetenceFactory;
