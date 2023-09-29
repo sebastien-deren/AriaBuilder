@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\Tests\Factory;
 
 use App\Domain\Model\Competence;
 use App\Domain\Model\Personnage;

@@ -5,10 +5,10 @@ namespace App\Tests\Functionnal;
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
-use App\Factory\CompetenceFactory;
-use App\Factory\CompetencePersonnageFactory;
-use App\Factory\PersonnageFactory;
-use App\Factory\ProfessionFactory;
+use App\Tests\Factory\CompetenceFactory;
+use App\Tests\Factory\CompetencePersonnageFactory;
+use App\Tests\Factory\PersonnageFactory;
+use App\Tests\Factory\ProfessionFactory;
 use Doctrine\ORM\EntityManager;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
