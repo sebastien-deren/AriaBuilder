@@ -7,8 +7,8 @@ namespace App\State;
 use ApiPlatform\Doctrine\Common\State\PersistProcessor;
 use ApiPlatform\Metadata\Operation;
 use ApiPlatform\State\ProcessorInterface;
+use App\Domain\Exception\UnreachableException;
 use App\Domain\Model\Talent;
-use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Logic\Talent\TalentCompetenceUpdaterInterface;
 use App\Domain\Logic\Talent\TalentCreationInterface;
 
@@ -23,7 +23,7 @@ class TalentPostProcessor implements ProcessorInterface
     {
 
         if (!($data instanceof Talent)) {
-            throw new \Exception('unreachable exception');
+            throw new UnreachableException();
         }
         $data = $this->talentCreation->create($data);
         $data = $this->competenceUpdater->updateCompetenceFromTalent($data);

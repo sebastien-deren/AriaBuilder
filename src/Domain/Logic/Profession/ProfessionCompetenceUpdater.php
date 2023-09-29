@@ -4,14 +4,11 @@ declare(strict_types=1);
 
 namespace App\Domain\Logic\Profession;
 
-use App\Domain\Logic\CompetencePersonnage\CompetencePersonnageUpdater;
 use App\Domain\Logic\CompetencePersonnage\CompetencePersonnageUpdaterInterface;
 use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Model\Personnage;
 use App\Domain\Model\Profession;
-//NOT HEXAGONAL
 use Doctrine\Common\Collections\Collection;
-use App\Domain\Logic\Profession\UpgradProfessionEnum;
 
 final class ProfessionCompetenceUpdater implements ProfessionCompetenceUpdaterInterface
 {
