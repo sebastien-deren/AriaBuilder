@@ -2,18 +2,15 @@
 
 namespace App\Domain\Model;
 
+use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Link;
-use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Patch;
-use Doctrine\ORM\Mapping as ORM;
-use ApiPlatform\Metadata\ApiResource;
-use ApiPlatform\Metadata\GetCollection;
-use App\DTO\Inputs\Characteristics\DiceInput;
+use ApiPlatform\Metadata\Post;
+use App\Infrastructure\ApiPlatform\Resource\Skills\SkillPointsInput;
+use App\Infrastructure\ApiPlatform\State\SkillPointPostProcessor;
 use App\Repository\CaracteristiqueRepository;
-use App\DTO\Inputs\Characteristics\PointInput;
-use App\Domain\Logic\Characteristiques\Processors\CharacDiceProcessor;
-use App\Domain\Logic\Characteristiques\Processors\CharacPointProcessor;
+use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
 
@@ -30,21 +27,11 @@ use App\Domain\Logic\Characteristiques\Processors\CharacPointProcessor;
         new Patch()
     ]
 )]
-#[ApiResource(
-    operations: [
-        new GetCollection(),
-    ]
-)]
+//in our "Cahier des charges"  We have Three methods to Update Characs now we only implemented one.
 #[ApiResource(
     uriTemplate: 'caracteristiques/points.{_format}',
     operations: [
-        new Post(input: PointInput::class, processor: CharacPointProcessor::class)
-    ]
-)]
-#[ApiResource(
-    uriTemplate: 'caracteristiques/dice.{_format}',
-    operations: [
-        new Post(input: DiceInput::class, processor: CharacDiceProcessor::class)
+        new Post(input: SkillPointsInput::class, processor: SkillPointPostProcessor::class)
     ]
 )]
 
