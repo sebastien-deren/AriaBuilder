@@ -3,11 +3,8 @@
 namespace App\Tests\Functionnal;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
-use App\Domain\Model\Background;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
-use App\Domain\Logic\Talent\Talent;
-use App\Factory\CaracteristiqueFactory;
 use App\Factory\CompetenceFactory;
 use App\Factory\CompetencePersonnageFactory;
 use App\Factory\PersonnageFactory;
@@ -73,8 +70,6 @@ class PersonnageTest extends ApiTestCase
             ]
 
         );
-
-        //dd($response->getContent());
         $this->assertResponseIsSuccessful();
         $this->assertJsonContains(['profession' => '/api/professions/1']);
         $competencePersonnage = $this->entityManager->getRepository(CompetencePersonnage::class)->find($competencePersonnage->getId());

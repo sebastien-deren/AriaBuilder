@@ -8,7 +8,6 @@ use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Talent;
 use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
-use App\Domain\Logic\Profession\UpgradProfessionEnum;
 use App\Factory\CaracteristiqueFactory;
 use App\Factory\CompetenceFactory;
 use App\Factory\CompetencePersonnageFactory;

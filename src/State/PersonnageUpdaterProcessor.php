@@ -8,6 +8,7 @@ use ApiPlatform\Metadata\Operation;
 use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\State\ProcessorInterface;
 use ApiPlatform\Doctrine\Common\State\PersistProcessor;
+use App\Domain\Exception\UnreachableException;
 use App\Domain\Logic\Profession\ProfessionCompetenceUpdaterInterface;
 use Symfony\Component\DependencyInjection\Attribute\Autowire;
 
@@ -20,7 +21,7 @@ final class PersonnageUpdaterProcessor implements ProcessorInterface
     public function process(mixed $data, Operation $operation, array $uriVariables = [], array $context = []): mixed
     {
         if (!$operation instanceof Patch) {
-            throw new Exception('unreachable Exception');
+            throw new UnreachableException();
         }
         $uow = $this->entityManager->getUnitOfWork();
         $previousPersonnage = $uow->getOriginalEntityData($data);
