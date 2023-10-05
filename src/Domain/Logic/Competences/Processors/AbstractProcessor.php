@@ -4,14 +4,15 @@ declare(strict_types=1);
 
 namespace App\Domain\Logic\Competences\Processors;
 
-use Exception;
-use App\Domain\Model\Personnage;
 use ApiPlatform\Metadata\Operation;
-use App\Repository\CompetenceRepository;
-use App\Repository\PersonnageRepository;
-use Doctrine\ORM\EntityManagerInterface;
 use ApiPlatform\State\ProcessorInterface;
+use App\Domain\Logic\Competences\DTO\CompetenceAbstract;
+use App\Domain\Model\Personnage;
 use App\DTO\Input\Competence\CompetenceInputAbstract;
+use App\Infrastructure\Doctrine\Repository\CompetenceRepository;
+use App\Infrastructure\Doctrine\Repository\PersonnageRepository;
+use Doctrine\ORM\EntityManagerInterface;
+use Exception;
 
 abstract class AbstractProcessor implements ProcessorInterface
 {
@@ -28,7 +29,7 @@ abstract class AbstractProcessor implements ProcessorInterface
         $personnage = $this->personnageRepository->find($uriVariables['id_perso']) ?? throw new Exception('404 entity not found');
         $this->buildCollection($data, $baseCompetenceCollection, $personnage);
     }
-    protected function buildCollection(CompetenceInputAbstract $data, array $baseCompetence, Personnage $personnage): array
+    protected function buildCollection(CompetenceAbstract $data, array $baseCompetence, Personnage $personnage): array
     {
         return [];
     }

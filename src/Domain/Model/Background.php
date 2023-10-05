@@ -7,8 +7,8 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\OpenApi\Model;
 use App\Domain\Model\CompetencePersonnage;
-use App\Repository\BackgroundRepository;
-use App\State\BackgroundPostProcessor;
+use App\Infrastructure\ApiPlatform\State\Processor\BackgroundPostProcessor;
+use App\Infrastructure\Doctrine\Repository\BackgroundRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: BackgroundRepository::class)]

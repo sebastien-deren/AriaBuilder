@@ -6,11 +6,11 @@ namespace App\Domain\Model;
 
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Post;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Personnage;
-use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
-use App\Repository\TalentRepository;
-use App\State\TalentPostProcessor;
+use App\Infrastructure\ApiPlatform\State\Processor\TalentPostProcessor;
+use App\Infrastructure\Doctrine\Repository\TalentRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;

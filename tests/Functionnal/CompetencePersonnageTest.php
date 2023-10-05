@@ -6,10 +6,10 @@ use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Domain\Logic\Competences\SubCompetenceEnum;
 use App\Domain\Model\Caracteristique;
 use App\Domain\Model\CompetencePersonnage;
-use App\Factory\CaracteristiqueFactory;
-use App\Factory\CompetenceFactory;
-use App\Factory\CompetencePersonnageFactory;
-use App\Factory\PersonnageFactory;
+use App\Tests\Factory\CaracteristiqueFactory;
+use App\Tests\Factory\CompetenceFactory;
+use App\Tests\Factory\CompetencePersonnageFactory;
+use App\Tests\Factory\PersonnageFactory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Entity;
 use Zenstruck\Foundry\Test\ResetDatabase;
@@ -50,8 +50,7 @@ class CompetencePersonnageTest extends ApiTestCase
             'GET',
             'api/competence_personnages/' . $competencePersonnage->getId(),
         );
-        dump($response->getContent());
         $this->assertResponseIsSuccessful();
-        $this->assertStringContainsString('api/personnage_competence/' . $competencePersonnage->getId(), $response->getContent());
+        $this->assertStringContainsString('api\/competence_personnages\/' . $competencePersonnage->getId(), $response->getContent());
     }
 }

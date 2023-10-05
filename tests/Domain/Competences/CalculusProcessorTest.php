@@ -3,21 +3,18 @@
 namespace App\Tests;
 
 use ApiPlatform\Metadata\GraphQl\Operation;
-use PHPUnit\Framework\TestCase;
-use App\Domain\Model\Competence;
-use App\Domain\Model\Personnage;
-use App\Repository\CompetenceRepository;
-use App\Repository\PersonnageRepository;
-use Doctrine\ORM\EntityManagerInterface;
-use PHPUnit\Framework\MockObject\MockObject;
 use App\Domain\Logic\Competences\Processors\CalculusProcessor;
-use App\DTO\Input\Competence\CalculusInput;
+use App\Infrastructure\ApiPlatform\Inputs\CalculusInput;
+use App\Infrastructure\Doctrine\Repository\CompetenceRepository;
+use App\Infrastructure\Doctrine\Repository\PersonnageRepository;
 use App\Tests\Factory\CaracteristiqueFactory;
 use App\Tests\Factory\CompetenceFactory;
 use App\Tests\Factory\PersonnageFactory;
-use Zenstruck\Foundry\Test\Factories;
+use Doctrine\ORM\EntityManagerInterface;
+use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
-use function Zenstruck\Foundry\create;
+use Zenstruck\Foundry\Test\Factories;
 
 class CalculusProcessorTest extends TestCase
 {
@@ -45,14 +42,14 @@ class CalculusProcessorTest extends TestCase
         $calculusInput = $this->createCalculusInput();
         $baseCompetence = CompetenceFactory::new()->based()->createMany(4);
         $carac = CaracteristiqueFactory::createOne();
-        $personnage = PersonnageFactory::new()->characterized($carac)->createOne();
+        $personnage = PersonnageFactory::createOne(['caracteristique' => $carac]);
         $this->personnageRepository->expects($this->once())->method('find')->willReturn($personnage->object());
         $this->competenceRepository->expects($this->once())->method('findby')->willReturn(array_map(fn ($item) => $item->object(), $baseCompetence));
         $this->entityManager->expects($this->exactly(count($baseCompetence)))->method('persist');
         $this->entityManager->expects($this->once())->method('flush');
         $this->processor->process($calculusInput, $this->post, ['id_perso' => 1]);
-        $charac1 = 'get' . $baseCompetence[0]->getFirstCharac();
-        $charac2 = 'get' . $baseCompetence[0]->getSecondCharac();
+        $charac1 = 'get' . $baseCompetence[0]->getFirstCharac()->value;
+        $charac2 = 'get' . $baseCompetence[0]->getSecondCharac()->value;
         $this->assertEquals(
             floor(($personnage->getCaracteristique()->$charac1()  + $personnage->getCaracteristique()->$charac2()) / 2),
             $personnage->getCompetence()[0]->getPourcentage()

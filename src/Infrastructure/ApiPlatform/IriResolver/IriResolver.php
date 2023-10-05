@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Infrastructure\ApiPlatform\IriResolver;
 
 use ApiPlatform\Api\IriConverterInterface;
-use App\Domain\Logic\Interface\RetrieveModelFromIri;
+use App\Domain\Interface\RetrieveModelFromIri;
 
 class IriResolver implements RetrieveModelFromIri
 {
