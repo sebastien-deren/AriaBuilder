@@ -76,7 +76,7 @@ class Personnage
     private ?Caracteristique $caracteristique = null;
 
     #[Groups(['personnage:competence'])]
-    #[ORM\OneToMany(mappedBy: 'personage', targetEntity: CompetencePersonnage::class, cascade: ['persist', 'remove'])]
+    #[ORM\OneToMany(mappedBy: 'personnage', targetEntity: CompetencePersonnage::class, cascade: ['persist', 'remove'])]
     private ?Collection $competence = null;
 
     #[Groups(['personnage:read', 'personnage:write'])]
@@ -193,7 +193,7 @@ class Personnage
     {
         if (!$this->competence->contains($competence)) {
             $this->competence->add($competence);
-            $competence->setPersonage($this);
+            $competence->setpersonnage($this);
         }
 
         return $this;
@@ -203,8 +203,8 @@ class Personnage
     {
         if ($this->competence->removeElement($competence)) {
             // set the owning side to null (unless already changed)
-            if ($competence->getPersonage() === $this) {
-                $competence->setPersonage(null);
+            if ($competence->getpersonnage() === $this) {
+                $competence->setpersonnage(null);
             }
         }
 

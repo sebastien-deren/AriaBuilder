@@ -33,7 +33,7 @@ class TalentTest extends ApiTestCase
         $personnage = PersonnageFactory::new()->characterized($carac)->create();
         $competencePersonnage = [];
         foreach ($competences as $competence) {
-            $competencePersonnage[] = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competence])->save();
+            $competencePersonnage[] = CompetencePersonnageFactory::createOne(['personnage' => $personnage, 'competence' => $competence])->save();
         }
         $oldCompetence = ['pourcentage' => $competencePersonnage[0]->getPourcentage(), 'id' => $competencePersonnage[0]->getId()];
         $response = static::createClient()->request(

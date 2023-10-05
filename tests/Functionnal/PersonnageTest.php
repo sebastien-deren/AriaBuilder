@@ -58,7 +58,7 @@ class PersonnageTest extends ApiTestCase
     {
         $competence = CompetenceFactory::createOne();
         $personnage = PersonnageFactory::createOne([]);
-        $competencePersonnage = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competence]);
+        $competencePersonnage = CompetencePersonnageFactory::createOne(['personnage' => $personnage, 'competence' => $competence]);
         $profession = ProfessionFactory::createOne(['competenceProfessions' => array($competence)]);
         $oldPercentage = $competencePersonnage->getPourcentage();
         $response = static::createClient()->request(
