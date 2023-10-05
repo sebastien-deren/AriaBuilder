@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Domain\Logic\Talent;
 
+use App\Domain\Exception\InvalidPersonnageException;
 use App\Domain\Model\Caracteristique;
 use App\Domain\Model\Talent;
 use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
-use Exception;
 
 class TalentCreation implements TalentCreationInterface
 {
@@ -50,8 +50,8 @@ class TalentCreation implements TalentCreationInterface
     private function validatePersonnage(Talent $talent): self
     {
         foreach ($talent->getUpgradedCompetence() as $competence) {
-            if ($competence->getpersonnage() !== $talent->getPersonnage()) {
-                throw new Exception('Access Right Exception');
+            if ($competence->getPersonnage() !== $talent->getPersonnage()) {
+                throw new InvalidPersonnageException('Access Right Exception');
             }
         }
         return $this;
