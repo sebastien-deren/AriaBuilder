@@ -8,6 +8,7 @@ use App\Domain\Model\Caracteristique;
 use App\Domain\Model\CompetencePersonnage;
 use App\Factory\CaracteristiqueFactory;
 use App\Factory\CompetenceFactory;
+use App\Factory\CompetencePersonnageFactory;
 use App\Factory\PersonnageFactory;
 use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\Mapping\Entity;
@@ -41,5 +42,16 @@ class CompetencePersonnageTest extends ApiTestCase
         $this->assertNotNull($competencePersonnage);
         $this->assertEquals((int)(($carac->getForce() + $carac->getIntelligence()) / 2), $competencePersonnage->getPourcentage());
         $this->assertResponseIsSuccessful();
+    }
+    public function testGetCompetencePersonnage(): void
+    {
+        $competencePersonnage = CompetencePersonnageFactory::createOne();
+        $response = static::createClient()->request(
+            'GET',
+            'api/competence_personnages/' . $competencePersonnage->getId(),
+        );
+        dump($response->getContent());
+        $this->assertResponseIsSuccessful();
+        $this->assertStringContainsString('api/personnage_competence/' . $competencePersonnage->getId(), $response->getContent());
     }
 }

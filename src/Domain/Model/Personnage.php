@@ -88,6 +88,7 @@ class Personnage
     private ?Profession $profession = null;
 
 
+    
     public function __construct()
     {
         $this->competence = new ArrayCollection();

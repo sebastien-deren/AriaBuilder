@@ -2,6 +2,8 @@
 
 namespace App\Domain\Model;
 
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
 use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
@@ -9,29 +11,36 @@ use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Infrastructure\ApiPlatform\Inputs\CompetencePersonnageInput;
+use App\Infrastructure\ApiPlatform\Outputs\CompetencePersonnageOutput;
+use App\Infrastructure\ApiPlatform\Outputs\CompetencePersonnagesCollectionOutput;
+use App\Infrastructure\ApiPlatform\State\GetCollectionProviderBaseCompetence;
+use App\Infrastructure\ApiPlatform\State\GetProviderBaseCompetence;
+use App\Infrastructure\ApiPlatform\State\GetProviderCompetencePersonnage;
 use App\Infrastructure\ApiPlatform\State\PostProcessorBaseCompetence;
 use App\Repository\CompetencePersonnageRepository;
 use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetencePersonnageRepository::class)]
 #[ApiResource(
     operations: [
-        new Get(),
-        new Post(uriTemplate: 'base_competence/auto.{_format}', input: CompetencePersonnageInput::class, processor: PostProcessorBaseCompetence::class)
+        new Post(uriTemplate: 'base_competence/auto.{_format}', input: CompetencePersonnageInput::class, processor: PostProcessorBaseCompetence::class),
+        new Get(uriTemplate: 'competence_personnages/{id}.{_format}', output: CompetencePersonnageOutput::class, provider: GetProviderCompetencePersonnage::class),
+        new GetCollection(
+            uriTemplate: 'personnage/{id_perso}/competences.{_format}',
+            uriVariables: [
+                'id_perso' => new Link(
+                    fromProperty: 'competence',
+                    fromClass: Personnage::class,
+                )
+            ],
+            output: CompetencePersonnagesCollectionOutput::class,
+            provider: GetCollectionProviderCompetencePersonnage::class
+        )
     ]
 )]
-#[ApiResource(
-    uriTemplate: 'personnages/{id_perso}/competences.{_format}',
-    uriVariables: [
-        'id_perso' => new Link(
-            fromProperty: 'competence',
-            fromClass: Personnage::class
-        )
-    ],
-    operations: [new GetCollection(), new Post(), new Patch()]
-
-)]
+#[ApiFilter(BooleanFilter::class, properties: ['isBaseCompetence'])]
 class CompetencePersonnage
 {
     #[ORM\Id]
