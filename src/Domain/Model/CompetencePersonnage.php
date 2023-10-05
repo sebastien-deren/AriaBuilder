@@ -2,43 +2,43 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\Get;
-use ApiPlatform\Metadata\Link;
-use ApiPlatform\Metadata\Post;
-use ApiPlatform\Metadata\Patch;
-use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
-use App\DTO\Input\Competence\CalculusInput;
+use ApiPlatform\Metadata\Link;
+use ApiPlatform\Metadata\Patch;
+use ApiPlatform\Metadata\Post;
+use App\Infrastructure\ApiPlatform\Inputs\CompetencePersonnageInput;
+use App\Infrastructure\ApiPlatform\State\PostProcessorBaseCompetence;
 use App\Repository\CompetencePersonnageRepository;
-use App\Domain\Logic\Competences\Processors\CalculusProcessor;
+use Doctrine\ORM\Mapping as ORM;
+use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetencePersonnageRepository::class)]
 #[ApiResource(
-    operations: [new Get()]
-)]
-#[ApiResource(
-    uriTemplate: 'personnages/{id_perso}/competences.{_format}',
-    uriVariables: [
-        'id_perso' => new Link(
-            fromProperty: 'competence',
-            fromClass: Personnage::class
+    operations: [
+        new Post(uriTemplate: 'base_competence/auto.{_format}', input: CompetencePersonnageInput::class, processor: PostProcessorBaseCompetence::class),
+        new Get(
+            uriTemplate: 'competence_personnages/{id}.{_format}',
+            //output: CompetencePersonnageOutput::class, provider: GetProviderCompetencePersonnage::class
+        ),
+        new GetCollection(
+            uriTemplate: 'personnage/{id_perso}/competences.{_format}',
+            uriVariables: [
+                'id_perso' => new Link(
+                    fromProperty: 'competence',
+                    fromClass: Personnage::class,
+                )
+            ],
+            //output: CompetencePersonnagesCollectionOutput::class,
+            //provider: GetCollectionProviderCompetencePersonnage::class
         )
-    ],
-    operations: [new GetCollection(), new Post(), new Patch()]
+    ]
+)]
 
-)]
-#[ApiResource(
-    uriTemplate: 'personnage/{id_perso}/base_competence.{_format}',
-    uriVariables: [
-        'id_perso' => new Link(
-            fromProperty: 'competence',
-            fromClass: Personnage::class
-        )
-    ],
-    operations: [new Post(input: CalculusInput::class, processor: CalculusProcessor::class)],
-)]
 class CompetencePersonnage
 {
     #[ORM\Id]

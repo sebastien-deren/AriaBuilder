@@ -3,13 +3,11 @@
 namespace App\Tests\Factory;
 
 use App\Domain\Model\Competence;
-use App\Domain\Logic\Characteristiques\CharacEnum;
 use App\Repository\CompetenceRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;
 use Zenstruck\Foundry\RepositoryProxy;
 
-use function Zenstruck\Foundry\faker;
 
 /**
  * @extends ModelFactory<Competence>
