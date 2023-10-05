@@ -11,8 +11,8 @@ use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Infrastructure\ApiPlatform\Inputs\CompetencePersonnageInput;
-use App\Infrastructure\ApiPlatform\State\PostProcessorBaseCompetence;
-use App\Repository\CompetencePersonnageRepository;
+use App\Infrastructure\ApiPlatform\State\Processor\PostProcessorBaseCompetence;
+use App\Infrastructure\Doctrine\Repository\CompetencePersonnageRepository;
 use Doctrine\ORM\Mapping as ORM;
 use phpDocumentor\Reflection\Types\Boolean;
 use Symfony\Component\Serializer\Annotation\Groups;
@@ -73,12 +73,12 @@ class CompetencePersonnage
         return $this;
     }
 
-    public function getpersonnage(): ?Personnage
+    public function getPersonnage(): ?Personnage
     {
         return $this->personnage;
     }
 
-    public function setpersonnage(?Personnage $personnage): static
+    public function setPersonnage(?Personnage $personnage): static
     {
         $this->personnage = $personnage;
 

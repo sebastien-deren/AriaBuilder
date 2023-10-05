@@ -4,10 +4,10 @@ declare(strict_types=1);
 
 namespace App\Domain\Logic\Characteristiques;
 
+use App\Domain\Interface\RetrieveModelFromIri;
 use App\Domain\Logic\Characteristiques\CharacLimitEnum;
 use App\Domain\Logic\Characteristiques\DTO\AbstractSkillInput;
 use App\Domain\Logic\Characteristiques\Exception\PointException;
-use App\Domain\Logic\Interface\RetrieveModelFromIri;
 use App\Domain\Model\Caracteristique;
 
 class CaracteristiqueConstructor implements CaracConstructorInterface

@@ -2,6 +2,7 @@
 
 namespace App\Tests\Factory;
 
+use App\Domain\Logic\Competences\SubCompetenceEnum;
 use App\Domain\Model\Competence;
 use App\Repository\CompetenceRepository;
 use Zenstruck\Foundry\ModelFactory;
@@ -73,8 +74,8 @@ final class CompetenceFactory extends ModelFactory
         $carac = ['Force', 'Intelligence', 'Charisme', 'Endurance', 'Dexterite'];
         return $this->addState([
             'isBaseCompetence' => true,
-            'firstCharac' => $carac[\rand(0, 4)],
-            'secondCharac' => $carac[\rand(0, 4)],
+            'firstCharac' => SubCompetenceEnum::cases()[\rand(0, 4)],
+            'secondCharac' => SubCompetenceEnum::cases()[\rand(0, 4)],
         ]);
     }
 }

@@ -11,7 +11,7 @@ use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Controller\BaseCompetence;
 use App\Domain\Logic\Competences\SubCompetenceEnum;
-use App\Repository\CompetenceRepository;
+use App\Infrastructure\Doctrine\Repository\CompetenceRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;

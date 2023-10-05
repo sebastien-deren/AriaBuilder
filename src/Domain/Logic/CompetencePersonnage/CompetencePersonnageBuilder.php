@@ -28,7 +28,7 @@ class CompetencePersonnageBuilder implements CompetencePersonnageBuilderInterfac
         $percent = (int)(($caracPerso->$functionSecondCharac() + $caracPerso->$functionFirstCharac()) / 2);
         return (new CompetencePersonnage())
             ->setCompetence($competence)
-            ->setPersonage($personnage)
+            ->setPersonnage($personnage)
             ->setPourcentage($percent);
     }
 }

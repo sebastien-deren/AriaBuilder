@@ -2,14 +2,14 @@
 
 namespace App\Tests\Domain\Characteristiques;
 
-use PHPUnit\Framework\TestCase;
-use App\Domain\Model\Personnage;
+use App\Domain\Interface\RetrieveModelFromIri;
 use App\Domain\Logic\Characteristiques\CaracteristiqueConstructor;
 use App\Domain\Logic\Characteristiques\CharacLimitEnum;
 use App\Domain\Logic\Characteristiques\Exception\PointException;
-use App\Domain\Logic\Interface\RetrieveModelFromIri;
-use App\Infrastructure\Resource\skills\SkillPointsInput;
+use App\Domain\Model\Personnage;
+use App\Infrastructure\ApiPlatform\Inputs\SkillPointsInput;
 use PHPUnit\Framework\MockObject\MockObject;
+use PHPUnit\Framework\TestCase;
 
 class PointProcessorTest extends TestCase
 {

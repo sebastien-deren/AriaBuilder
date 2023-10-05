@@ -7,9 +7,9 @@ use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
-use App\Infrastructure\ApiPlatform\Resource\Skills\SkillPointsInput;
-use App\Infrastructure\ApiPlatform\State\SkillPointPostProcessor;
-use App\Repository\CaracteristiqueRepository;
+use App\Infrastructure\ApiPlatform\Inputs\SkillPointsInput;
+use App\Infrastructure\ApiPlatform\State\Processor\SkillPointPostProcessor;
+use App\Infrastructure\Doctrine\Repository\CaracteristiqueRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CaracteristiqueRepository::class)]
