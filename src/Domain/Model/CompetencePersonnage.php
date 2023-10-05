@@ -11,11 +11,6 @@ use ApiPlatform\Metadata\Link;
 use ApiPlatform\Metadata\Patch;
 use ApiPlatform\Metadata\Post;
 use App\Infrastructure\ApiPlatform\Inputs\CompetencePersonnageInput;
-use App\Infrastructure\ApiPlatform\Outputs\CompetencePersonnageOutput;
-use App\Infrastructure\ApiPlatform\Outputs\CompetencePersonnagesCollectionOutput;
-use App\Infrastructure\ApiPlatform\State\GetCollectionProviderBaseCompetence;
-use App\Infrastructure\ApiPlatform\State\GetProviderBaseCompetence;
-use App\Infrastructure\ApiPlatform\State\GetProviderCompetencePersonnage;
 use App\Infrastructure\ApiPlatform\State\PostProcessorBaseCompetence;
 use App\Repository\CompetencePersonnageRepository;
 use Doctrine\ORM\Mapping as ORM;
@@ -26,7 +21,10 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     operations: [
         new Post(uriTemplate: 'base_competence/auto.{_format}', input: CompetencePersonnageInput::class, processor: PostProcessorBaseCompetence::class),
-        new Get(uriTemplate: 'competence_personnages/{id}.{_format}', output: CompetencePersonnageOutput::class, provider: GetProviderCompetencePersonnage::class),
+        new Get(
+            uriTemplate: 'competence_personnages/{id}.{_format}',
+            //output: CompetencePersonnageOutput::class, provider: GetProviderCompetencePersonnage::class
+        ),
         new GetCollection(
             uriTemplate: 'personnage/{id_perso}/competences.{_format}',
             uriVariables: [
@@ -35,12 +33,12 @@ use Symfony\Component\Serializer\Annotation\Groups;
                     fromClass: Personnage::class,
                 )
             ],
-            output: CompetencePersonnagesCollectionOutput::class,
-            provider: GetCollectionProviderCompetencePersonnage::class
+            //output: CompetencePersonnagesCollectionOutput::class,
+            //provider: GetCollectionProviderCompetencePersonnage::class
         )
     ]
 )]
-#[ApiFilter(BooleanFilter::class, properties: ['isBaseCompetence'])]
+
 class CompetencePersonnage
 {
     #[ORM\Id]

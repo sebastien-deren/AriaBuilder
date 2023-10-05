@@ -6,9 +6,9 @@ namespace App\Domain\Logic\Competences;
 
 enum SubCompetenceEnum: string
 {
-    case Force = 'force';
-    case Intelligence = 'intelligence';
-    case Dexterite = 'dexterite';
-    case Charisme = 'charisme';
-    case Endurance = 'endurance';
+    case Force = 'Force';
+    case Intelligence = 'Intelligence';
+    case Dexterite = 'Dexterite';
+    case Charisme = 'Charisme';
+    case Endurance = 'Endurance';
 }

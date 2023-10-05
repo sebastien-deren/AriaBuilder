@@ -2,32 +2,30 @@
 
 namespace App\Domain\Model;
 
-use ApiPlatform\Metadata\Get;
-use Doctrine\DBAL\Types\Types;
-use Doctrine\ORM\Mapping as ORM;
+use ApiPlatform\Doctrine\Orm\Filter\BooleanFilter;
+use ApiPlatform\Metadata\ApiFilter;
 use ApiPlatform\Metadata\ApiResource;
+use ApiPlatform\Metadata\Get;
 use ApiPlatform\Metadata\GetCollection;
 use ApiPlatform\Metadata\Post;
 use ApiPlatform\Metadata\Put;
 use App\Controller\BaseCompetence;
 use App\Domain\Logic\Competences\SubCompetenceEnum;
 use App\Repository\CompetenceRepository;
+use Doctrine\DBAL\Types\Types;
+use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: CompetenceRepository::class)]
 #[ApiResource(
     operations: [
         new Get(),
-        new GetCollection(
-            name: 'base Competence Collection',
-            uriTemplate: '/base_competence',
-            controller: BaseCompetence::class
-        ),
         new GetCollection(),
         new Post(),
         new Put(),
     ]
 )]
+#[ApiFilter(BooleanFilter::class, properties: ['isBaseCompetence'])]
 class Competence
 {
     #[ORM\Id]
