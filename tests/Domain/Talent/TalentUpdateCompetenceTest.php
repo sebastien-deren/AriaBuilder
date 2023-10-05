@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace App\Tests\Domain\Logic\Talent;
 
+use App\Domain\Logic\CompetencePersonnage\CompetencePersonnageUpdater;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Talent;
 use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
@@ -20,7 +21,8 @@ class TalentUpdateCompetenceTest extends TestCase
         $talent = (new Talent())->setBonus($valueBonus);
         $competencePersonnage = (new CompetencePersonnage())->setPourcentage($pourcentage);
         $talent->addUpgradedCompetence($competencePersonnage);
-        $result = (new TalentCompetenceUpdater())->updateCompetenceFromTalent($talent);
+        $competenceUpdate = new CompetencePersonnageUpdater();
+        $result = (new TalentCompetenceUpdater($competenceUpdate))->updateCompetenceFromTalent($talent);
         $this->assertEquals($result->getUpgradedCompetence()->first()->getPourcentage(), $pourcentage + $valueBonus->value);
     }
     public function pourcentProvider(): array

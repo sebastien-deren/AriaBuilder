@@ -50,7 +50,7 @@ class TalentCreation implements TalentCreationInterface
     private function validatePersonnage(Talent $talent): self
     {
         foreach ($talent->getUpgradedCompetence() as $competence) {
-            if ($competence->getPersonage() !== $talent->getPersonnage()) {
+            if ($competence->getPersonnage() !== $talent->getPersonnage()) {
                 throw new InvalidPersonnageException('Access Right Exception');
             }
         }

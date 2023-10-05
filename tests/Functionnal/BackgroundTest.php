@@ -6,9 +6,9 @@ use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
 use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Model\Background;
 use App\Domain\Model\CompetencePersonnage;
-use App\Factory\CompetenceFactory;
-use App\Factory\CompetencePersonnageFactory;
-use App\Factory\PersonnageFactory;
+use App\Tests\Factory\CompetenceFactory;
+use App\Tests\Factory\CompetencePersonnageFactory;
+use App\Tests\Factory\PersonnageFactory;
 use App\Repository\BackgroundRepository;
 use App\Repository\CompetencePersonnageRepository;
 use Doctrine\ORM\EntityManager;
@@ -35,9 +35,9 @@ class BackgroundTest extends ApiTestCase
         $competenceBonus = CompetenceFactory::createOne();
         $personnage = PersonnageFactory::createOne([]);
         $competencePersonnage = [];
-        $competencePersonnage['bonus'] = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competenceBonus]);
+        $competencePersonnage['bonus'] = CompetencePersonnageFactory::createOne(['personnage' => $personnage, 'competence' => $competenceBonus]);
         $oldBonusPercentage = $competencePersonnage['bonus']->getPourcentage();
-        $competencePersonnage['malus'] = CompetencePersonnageFactory::createOne(['personage' => $personnage, 'competence' => $competenceMalus]);
+        $competencePersonnage['malus'] = CompetencePersonnageFactory::createOne(['personnage' => $personnage, 'competence' => $competenceMalus]);
         $oldMalusPercentage = $competencePersonnage['malus']->getPourcentage();
         $description = $faker->paragraph();
         $response = $this->createClient()->request('POST', 'api/backgrounds', [

@@ -3,7 +3,7 @@
 namespace App\Tests\Factory;
 
 use App\Domain\Model\Background;
-use App\Factory\CompetenceFactory;
+use App\Tests\Factory\CompetenceFactory;
 use App\Repository\BackgroundRepository;
 use Zenstruck\Foundry\ModelFactory;
 use Zenstruck\Foundry\Proxy;

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\Tests\Factory;
 
 use App\Domain\Model\Caracteristique;
 use App\Repository\CaracteristiqueRepository;

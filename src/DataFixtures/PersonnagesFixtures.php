@@ -4,7 +4,7 @@ namespace App\DataFixtures;
 
 use App\Domain\Model\Caracteristique;
 use App\Domain\Model\Personnage;
-use App\Factory\PersonnageFactory;
+use App\Tests\Factory\PersonnageFactory;
 use Doctrine\Bundle\FixturesBundle\Fixture;
 use Doctrine\Persistence\ObjectManager;
 

@@ -1,16 +1,22 @@
 <?php
 
-namespace App\DTO\Inputs\Characteristics;
+declare(strict_types=1);
 
-abstract class InputAbstract
+namespace App\Domain\Logic\Characteristiques\DTO;
+
+class AbstractSkillInput
 {
 
-    public int $intelligence;
-    public int $force;
-    public int $dexterite;
-    public int $charisme;
-    public int $endurance;
-    protected string $personnage;
+    public function __construct(
+        public int $intelligence,
+        public int $force,
+        public int $dexterite,
+        public int $charisme,
+        public int $endurance,
+        protected string $personnage
+    ) {
+    }
+
     public function toArray(): array
     {
         return array(

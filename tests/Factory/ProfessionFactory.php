@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Factory;
+namespace App\Tests\Factory;
 
 use Zenstruck\Foundry\Proxy;
 use App\Domain\Model\Competence;
