@@ -17,11 +17,6 @@ use Symfony\Component\Serializer\Annotation\Groups;
 #[ApiResource(
     operations: [
         new Get(),
-        new GetCollection(
-            name: 'base Competence Collection',
-            uriTemplate: '/base_competence',
-            controller: BaseCompetence::class
-        ),
         new GetCollection(),
         new Post(),
         new Put(),

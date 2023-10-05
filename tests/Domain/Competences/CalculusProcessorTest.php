@@ -12,9 +12,9 @@ use Doctrine\ORM\EntityManagerInterface;
 use PHPUnit\Framework\MockObject\MockObject;
 use App\Domain\Logic\Competences\Processors\CalculusProcessor;
 use App\DTO\Input\Competence\CalculusInput;
-use App\Factory\CaracteristiqueFactory;
-use App\Factory\CompetenceFactory;
-use App\Factory\PersonnageFactory;
+use App\Tests\Factory\CaracteristiqueFactory;
+use App\Tests\Factory\CompetenceFactory;
+use App\Tests\Factory\PersonnageFactory;
 use Zenstruck\Foundry\Test\Factories;
 
 use function Zenstruck\Foundry\create;

@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace App\Tests\Functionnal;
 
 use ApiPlatform\Symfony\Bundle\Test\ApiTestCase;
+use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
 use App\Domain\Model\CompetencePersonnage;
 use App\Domain\Model\Talent;
-use App\Domain\Logic\CompetencePersonnage\UpgradeCompetenceEnum;
-use App\Factory\CaracteristiqueFactory;
-use App\Factory\CompetenceFactory;
-use App\Factory\CompetencePersonnageFactory;
-use App\Factory\PersonnageFactory;
+use App\Tests\Factory\CaracteristiqueFactory;
+use App\Tests\Factory\CompetencePersonnageFactory;
+use App\Tests\Factory\PersonnageFactory;
+use App\Tests\Factory\CompetenceFactory;
 use Zenstruck\Foundry\Test\ResetDatabase;
 
 class TalentTest extends ApiTestCase
