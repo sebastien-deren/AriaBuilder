@@ -51,7 +51,7 @@ class CompetencePersonnage
     private ?int $pourcentage = null;
 
     #[ORM\ManyToOne(inversedBy: 'competence')]
-    private ?Personnage $personage = null;
+    private ?Personnage $personnage = null;
 
     #[ORM\ManyToOne]
     private ?Competence $competence = null;
@@ -73,14 +73,14 @@ class CompetencePersonnage
         return $this;
     }
 
-    public function getPersonage(): ?Personnage
+    public function getpersonnage(): ?Personnage
     {
-        return $this->personage;
+        return $this->personnage;
     }
 
-    public function setPersonage(?Personnage $personage): static
+    public function setpersonnage(?Personnage $personnage): static
     {
-        $this->personage = $personage;
+        $this->personnage = $personnage;
 
         return $this;
     }
